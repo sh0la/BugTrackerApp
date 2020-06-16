@@ -21,7 +21,7 @@ namespace BugTrackerApp.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("BugTrackerConnectionString", throwIfV1Schema: false)
         {
         }
 

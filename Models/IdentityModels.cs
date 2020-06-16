@@ -14,10 +14,12 @@ namespace BugTrackerApp.Models
         public ICollection<TicketNotification> TicketNotifications { get; set; }
         public ICollection<TicketHistory> TicketHistories { get; set; }
         public ICollection<TicketAttachment> TicketAttachments { get; set; }
+        public ICollection<TicketComment> TicketComments { get; set; }
 
 
         public ApplicationUser()
         {
+            this.TicketComments = new HashSet<TicketComment>();
             this.TicketNotifications = new HashSet<TicketNotification>();
             this.TicketHistories = new HashSet<TicketHistory>();
             this.TicketAttachments = new HashSet<TicketAttachment>();
@@ -41,6 +43,7 @@ namespace BugTrackerApp.Models
         public DbSet<TicketType> TicketTypes { get; set; }
         public DbSet<TicketHistory> TicketHistories { get; set; }
         public DbSet<TicketAttachment> TicketAttachments { get; set; }
+        public DbSet<TicketComment> TicketComments { get; set; }
 
         public ApplicationDbContext()
             : base("BugTrackerConnectionString", throwIfV1Schema: false)

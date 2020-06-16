@@ -19,8 +19,8 @@ namespace BugTrackerApp.Models
         public virtual TicketType TicketType { get; set; }
         public int TicketPriorityId { get; set; }
         public virtual TicketPriority TicketTypePriority { get; set; }
-        //public int TicketStatusId { get; set; }
-        //public virtual TicketStatus TicketStatus { get; set; }
+        public int TicketStatusId { get; set; }
+        public virtual TicketStatus TicketStatus { get; set; }
         //public int OwnerUserId { get; set; }
         //public virtual OwnerUser OwnerUser { get; set; }
         //public int AssignedToUserId { get; set; }

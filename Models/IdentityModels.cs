@@ -20,6 +20,9 @@ namespace BugTrackerApp.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Project> Projects { get; set; }
+
         public ApplicationDbContext()
             : base("BugTrackerConnectionString", throwIfV1Schema: false)
         {

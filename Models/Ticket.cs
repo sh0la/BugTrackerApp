@@ -13,8 +13,8 @@ namespace BugTrackerApp.Models
         public string Description { get; set; }
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
-        //public int ProjectId { get; set; }
-        //public virtual Project Project { get; set; }
+        public int ProjectId { get; set; }
+        public virtual Project Project { get; set; }
         //public int TicketTypeId { get; set; }
         //public virtual TicketType TicketType { get; set; }
         //public int TicketPriorityId { get; set; }

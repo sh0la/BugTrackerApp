@@ -26,13 +26,13 @@ namespace BugTrackerApp.Models
         //public int AssignedToUserId { get; set; }
         //public virtual AssignedToUser AssignedToUser { get; set; }
         //public ICollection<TicketAttachment> TicketAttachments { get; set; }
-        //public ICollection<TicketHistory> TicketHistories { get; set; }
+        public ICollection<TicketHistory> TicketHistories { get; set; }
         public ICollection<TicketNotification> TicketNotifications { get; set; }
 
         public Ticket()
         {
             //this.TicketAttachments = new HashSet<TicketAttachment>();
-            //this.TicketHistories = new HashSet<TicketHistory>();
+            this.TicketHistories = new HashSet<TicketHistory>();
             this.TicketNotifications = new HashSet<TicketNotification>();
         }
 

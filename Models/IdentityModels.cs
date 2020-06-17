@@ -11,11 +11,11 @@ namespace BugTrackerApp.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public ICollection<TicketNotification> TicketNotifications { get; set; }
-        public ICollection<TicketHistory> TicketHistories { get; set; }
-        public ICollection<TicketAttachment> TicketAttachments { get; set; }
-        public ICollection<TicketComment> TicketComments { get; set; }
-        public ICollection<ProjectUser> ProjectUsers { get; set; }
+        public virtual ICollection<TicketNotification> TicketNotifications { get; set; }
+        public virtual ICollection<TicketHistory> TicketHistories { get; set; }
+        public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
+        public virtual ICollection<TicketComment> TicketComments { get; set; }
+        public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
 
 
         public ApplicationUser()

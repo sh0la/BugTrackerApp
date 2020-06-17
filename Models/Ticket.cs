@@ -26,10 +26,10 @@ namespace BugTrackerApp.Models
         //public virtual OwnerUser OwnerUser { get; set; }
         //public int AssignedToUserId { get; set; }
         //public virtual AssignedToUser AssignedToUser { get; set; }
-        public ICollection<TicketComment> TicketComments { get; set; }
-        public ICollection<TicketAttachment> TicketAttachments { get; set; }
-        public ICollection<TicketHistory> TicketHistories { get; set; }
-        public ICollection<TicketNotification> TicketNotifications { get; set; }
+        public virtual ICollection<TicketComment> TicketComments { get; set; }
+        public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
+        public virtual ICollection<TicketHistory> TicketHistories { get; set; }
+        public virtual ICollection<TicketNotification> TicketNotifications { get; set; }
 
         public Ticket()
         {

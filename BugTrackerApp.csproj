@@ -212,11 +212,16 @@
     <Compile Include="Migrations\202006162249127_AddTicketCommentTableToDatabase.designer.cs">
       <DependentUpon>202006162249127_AddTicketCommentTableToDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006171346372_AddProjectUserTableToDatabase.cs" />
+    <Compile Include="Migrations\202006171346372_AddProjectUserTableToDatabase.designer.cs">
+      <DependentUpon>202006171346372_AddProjectUserTableToDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\ProjectUser.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketAttachment.cs" />
     <Compile Include="Models\TicketComment.cs" />
@@ -429,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006162249127_AddTicketCommentTableToDatabase.resx">
       <DependentUpon>202006162249127_AddTicketCommentTableToDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006171346372_AddProjectUserTableToDatabase.resx">
+      <DependentUpon>202006171346372_AddProjectUserTableToDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -15,6 +15,7 @@ namespace BugTrackerApp.Models
         public ICollection<TicketHistory> TicketHistories { get; set; }
         public ICollection<TicketAttachment> TicketAttachments { get; set; }
         public ICollection<TicketComment> TicketComments { get; set; }
+        public ICollection<ProjectUser> ProjectUsers { get; set; }
 
 
         public ApplicationUser()
@@ -23,6 +24,7 @@ namespace BugTrackerApp.Models
             this.TicketNotifications = new HashSet<TicketNotification>();
             this.TicketHistories = new HashSet<TicketHistory>();
             this.TicketAttachments = new HashSet<TicketAttachment>();
+            this.ProjectUsers = new HashSet<ProjectUser>();
         }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -44,6 +46,7 @@ namespace BugTrackerApp.Models
         public DbSet<TicketHistory> TicketHistories { get; set; }
         public DbSet<TicketAttachment> TicketAttachments { get; set; }
         public DbSet<TicketComment> TicketComments { get; set; }
+        public DbSet<ProjectUser> ProjectUsers { get; set; }
 
         public ApplicationDbContext()
             : base("BugTrackerConnectionString", throwIfV1Schema: false)

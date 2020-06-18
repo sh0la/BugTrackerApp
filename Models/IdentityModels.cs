@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Security.Policy;
@@ -16,7 +17,10 @@ namespace BugTrackerApp.Models
         public virtual ICollection<TicketAttachment> TicketAttachments { get; set; }
         public virtual ICollection<TicketComment> TicketComments { get; set; }
         public virtual ICollection<ProjectUser> ProjectUsers { get; set; }
-
+        [ForeignKey("OwnerUserId")]
+        public virtual ICollection<Ticket> OwnerTickets { get; set; }
+        [ForeignKey("AssignedToUserId")]
+        public virtual ICollection<Ticket> AssignedToUserTickets { get; set; }
 
         public ApplicationUser()
         {
@@ -25,6 +29,8 @@ namespace BugTrackerApp.Models
             this.TicketHistories = new HashSet<TicketHistory>();
             this.TicketAttachments = new HashSet<TicketAttachment>();
             this.ProjectUsers = new HashSet<ProjectUser>();
+            this.OwnerTickets = new HashSet<Ticket>();
+            this.AssignedToUserTickets = new HashSet<Ticket>();
         }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

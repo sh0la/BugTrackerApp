@@ -224,6 +224,10 @@
     <Compile Include="Migrations\202006181734088_AddOwnersUserAndAssignedToUserTables.designer.cs">
       <DependentUpon>202006181734088_AddOwnersUserAndAssignedToUserTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006192034370_removeUnwantedInterfaces.cs" />
+    <Compile Include="Migrations\202006192034370_removeUnwantedInterfaces.designer.cs">
+      <DependentUpon>202006192034370_removeUnwantedInterfaces.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -451,6 +455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006181734088_AddOwnersUserAndAssignedToUserTables.resx">
       <DependentUpon>202006181734088_AddOwnersUserAndAssignedToUserTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006192034370_removeUnwantedInterfaces.resx">
+      <DependentUpon>202006192034370_removeUnwantedInterfaces.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

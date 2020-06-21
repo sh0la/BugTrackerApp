@@ -228,6 +228,10 @@
     <Compile Include="Migrations\202006192034370_removeUnwantedInterfaces.designer.cs">
       <DependentUpon>202006192034370_removeUnwantedInterfaces.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006211132005_AddUserDAL.cs" />
+    <Compile Include="Migrations\202006211132005_AddUserDAL.designer.cs">
+      <DependentUpon>202006211132005_AddUserDAL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -244,6 +248,7 @@
     <Compile Include="Models\TicketPriority.cs" />
     <Compile Include="Models\TicketStatus.cs" />
     <Compile Include="Models\TicketType.cs" />
+    <Compile Include="Models\UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -460,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006192034370_removeUnwantedInterfaces.resx">
       <DependentUpon>202006192034370_removeUnwantedInterfaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006211132005_AddUserDAL.resx">
+      <DependentUpon>202006211132005_AddUserDAL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -236,7 +236,9 @@
     <Compile Include="Models\ProjectUser.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketAttachment.cs" />
+    <Compile Include="Models\TicketBL.cs" />
     <Compile Include="Models\TicketComment.cs" />
+    <Compile Include="Models\TicketDAL.cs" />
     <Compile Include="Models\TicketHistory.cs" />
     <Compile Include="Models\TicketNotification.cs" />
     <Compile Include="Models\TicketPriority.cs" />

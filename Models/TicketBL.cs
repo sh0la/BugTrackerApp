@@ -7,9 +7,9 @@ namespace BugTrackerApp.Models
 {
     public class TicketBL
     {
-        private readonly TicketDAL _repo;
+        private readonly ITicket _repo;
 
-        public TicketBL(TicketDAL repo)
+        public TicketBL(ITicket repo)
         {
             _repo = repo;
         }

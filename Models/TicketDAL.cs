@@ -6,10 +6,10 @@ using System.Data.Entity;
 
 namespace BugTrackerApp.Models
 {
-    public class TicketDAL
+    public class TicketDAL : ITicket
     {
         ApplicationDbContext db = new ApplicationDbContext();
-        
+
 
         public string Name { get; set; }
 
@@ -30,7 +30,7 @@ namespace BugTrackerApp.Models
             //var currentTicket = db.Tickets.Find(Id);
             db.Entry(ticket).State = EntityState.Modified;
             db.SaveChanges();
-            
+
         }
 
     }

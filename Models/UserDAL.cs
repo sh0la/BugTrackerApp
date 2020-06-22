@@ -14,8 +14,8 @@ namespace BugTrackerApp.Models
         static UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         static RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
-  
-            public static void CreateRole(string roleName)
+        public static void CreateRole(string roleName)
+
         {
             if (!roleManager.RoleExists(roleName))
             {

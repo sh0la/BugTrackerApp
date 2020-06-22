@@ -10,7 +10,6 @@ namespace BugTrackerApp.Models
     {
         ApplicationDbContext db = new ApplicationDbContext();
         
-
         public void Add(Ticket ticket)
         {
             db.Tickets.Add(ticket);

@@ -11,8 +11,6 @@ namespace BugTrackerApp.Models
         ApplicationDbContext db = new ApplicationDbContext();
         
 
-        public string Name { get; set; }
-
         public void Add(Ticket ticket)
         {
             db.Tickets.Add(ticket);
@@ -27,7 +25,6 @@ namespace BugTrackerApp.Models
 
         public void Edit(Ticket ticket)
         {
-            //var currentTicket = db.Tickets.Find(Id);
             db.Entry(ticket).State = EntityState.Modified;
             db.SaveChanges();
             

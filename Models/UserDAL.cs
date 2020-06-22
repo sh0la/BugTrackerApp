@@ -14,57 +14,8 @@ namespace BugTrackerApp.Models
         static UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         static RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
-        public static void CreateAdminRole()
-        {
-            if(!roleManager.RoleExists("Administrator")) 
-            {
-                roleManager.Create(new IdentityRole("Administrator"));
-                db.SaveChanges();
-            }
-            
-        }
-
-        public static void CreateProjectManagerRole()
-        {
-            if (!roleManager.RoleExists("Project Manager"))
-            {
-                roleManager.Create(new IdentityRole("Project Manager"));
-                db.SaveChanges();
-            }
-
-        }
-
-        public static void CreateDeveloperRole()
-        {
-            if (!roleManager.RoleExists("Developer"))
-            {
-                roleManager.Create(new IdentityRole("Developer"));
-                db.SaveChanges();
-            }
-
-        }
-
-        public static void CreateSubmitterRole()
-        {
-            if (!roleManager.RoleExists("Submitter"))
-            {
-                roleManager.Create(new IdentityRole("Submitter"));
-                db.SaveChanges();
-            }
-
-        }
-
-        public static void CreateGlobalAdminRole()
-        {
-            if (!roleManager.RoleExists("Global Admin"))
-            {
-                roleManager.Create(new IdentityRole("Global Admin"));
-                db.SaveChanges();
-            }
-
-        }
-
-        public static void CreateRole(string roleName)
+  
+            public static void CreateRole(string roleName)
         {
             if (!roleManager.RoleExists(roleName))
             {
@@ -72,8 +23,6 @@ namespace BugTrackerApp.Models
                 {
                     Name = roleName
                 });
-
-                db.SaveChanges();
             }
         }
 
@@ -110,18 +59,6 @@ namespace BugTrackerApp.Models
             {
                 userManager.AddToRole(user.Id, roleName);
             }
-            db.SaveChanges();
-        }
-
-        //???
-        public static void CreateUser(string name, string email, string password)
-        {
-            var user = new ApplicationUser();
-            user.UserName = name;
-            user.Email = email;
-            userManager.CreateIdentityAsync(user, password);
-   
-            db.SaveChanges();
 
         }
 

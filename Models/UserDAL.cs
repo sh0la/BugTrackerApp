@@ -15,6 +15,7 @@ namespace BugTrackerApp.Models
         static RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
         public static void CreateRole(string roleName)
+
         {
             if (!roleManager.RoleExists(roleName))
             {
@@ -22,8 +23,6 @@ namespace BugTrackerApp.Models
                 {
                     Name = roleName
                 });
-
-                db.SaveChanges();
             }
         }
 
@@ -60,6 +59,7 @@ namespace BugTrackerApp.Models
             {
                 userManager.AddToRole(user.Id, roleName);
             }
+
         }
 
         public static void RemoveUser(ApplicationUser user)

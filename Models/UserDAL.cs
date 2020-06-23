@@ -14,7 +14,7 @@ namespace BugTrackerApp.Models
         static UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         static RoleManager<IdentityRole> roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
-        public static void CreateRole(string roleName)
+        public void CreateRole(string roleName)
 
         {
             if (!roleManager.RoleExists(roleName))
@@ -26,7 +26,7 @@ namespace BugTrackerApp.Models
             }
         }
 
-        public static void DeleteRole(string roleName)
+        public void DeleteRole(string roleName)
         {
             // can we delete default roles?
             if (roleManager.RoleExists(roleName))
@@ -35,12 +35,12 @@ namespace BugTrackerApp.Models
             }
         }
 
-        public static bool UserIsInRole(string userId, string roleName)
+        public bool UserIsInRole(string userId, string roleName)
         {
             return userManager.IsInRole(userId, roleName);
         }
 
-        public static bool RemoveUserFromRole(string userId, string roleName)
+        public bool RemoveUserFromRole(string userId, string roleName)
         {
             if (UserIsInRole(userId, roleName))
             {
@@ -51,7 +51,7 @@ namespace BugTrackerApp.Models
             return false;
         }
 
-        public static void AddUserToRole(string roleName, string userName)
+        public void AddUserToRole(string roleName, string userName)
         {
             IdentityRole role = roleManager.FindByName(roleName);
             ApplicationUser user = userManager.FindByName(userName);
@@ -59,15 +59,25 @@ namespace BugTrackerApp.Models
             {
                 userManager.AddToRole(user.Id, roleName);
             }
-
+            
         }
 
-        public static void RemoveUser(ApplicationUser user)
+        public void RemoveUser(ApplicationUser user)
         {
             db.Users.Remove(user);
             db.SaveChanges();
         }
 
+        public void RemoveUserFromProject(ApplicationUser user, Project project, ApplicationUser newUser)
+        {
+            var currentProject = db.Projects.Find(project.Id);
+            currentProject.Name = newUser.UserName;
+            db.SaveChanges();
+        }
 
+        public IList<ApplicationUser> GetAllUsers()
+        {
+            return db.Users.ToList();
+        }
     }
 }

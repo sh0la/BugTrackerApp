@@ -241,6 +241,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BL\TicketAttachmentBL.cs" />
     <Compile Include="Models\DAL\TicketAttachmentRepo.cs" />
+    <Compile Include="Models\DAL\TicketCommentRepo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ITicketRepo.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

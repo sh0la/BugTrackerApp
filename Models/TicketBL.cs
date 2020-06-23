@@ -7,9 +7,9 @@ namespace BugTrackerApp.Models
 {
     public class TicketBL
     {
-        private readonly ITicket _repo;
+        private readonly ITicketRepo _repo;
 
-        public TicketBL(ITicket repo)
+        public TicketBL(ITicketRepo repo)
         {
             _repo = repo;
         }
@@ -17,7 +17,6 @@ namespace BugTrackerApp.Models
         public Ticket GetTicket(int Id)
         {
             return _repo.GetTicket(Id);
-
         }
 
         public void AddTicket(Ticket ticket)

@@ -19,15 +19,12 @@ namespace BugTrackerApp.Models
         public Ticket GetTicket(int Id)
         {
             return db.Tickets.Find(Id);
-
         }
 
         public void Edit(Ticket ticket)
         {
             db.Entry(ticket).State = EntityState.Modified;
             db.SaveChanges();
-            
         }
-
     }
 }

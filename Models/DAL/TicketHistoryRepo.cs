@@ -18,5 +18,19 @@ namespace BugTrackerApp.Models.DAL
             //update the new history
             
         }
+
+        public TicketHistory Get(int Id)
+        {
+            return db.TicketHistories.Find(Id);
+        }
+
+        public IList<TicketHistory> Get()
+        {
+            return db.TicketHistories.ToList();
+        }
+
+    
+
+       
     }
 }

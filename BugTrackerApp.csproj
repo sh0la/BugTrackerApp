@@ -253,16 +253,16 @@
     <Compile Include="Models\ProjectUser.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketAttachment.cs" />
-    <Compile Include="Models\TicketBL.cs" />
+    <Compile Include="Models\BL\TicketBL.cs" />
     <Compile Include="Models\TicketComment.cs" />
-    <Compile Include="Models\TicketDAL.cs" />
+    <Compile Include="Models\DAL\TicketDAL.cs" />
     <Compile Include="Models\TicketHistory.cs" />
     <Compile Include="Models\TicketNotification.cs" />
     <Compile Include="Models\TicketPriority.cs" />
     <Compile Include="Models\TicketStatus.cs" />
     <Compile Include="Models\TicketType.cs" />
-    <Compile Include="Models\UserBL.cs" />
-    <Compile Include="Models\UserDAL.cs" />
+    <Compile Include="Models\BL\UserBL.cs" />
+    <Compile Include="Models\DAL\UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

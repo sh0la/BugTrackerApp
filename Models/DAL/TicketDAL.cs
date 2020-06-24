@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 
-namespace BugTrackerApp.Models
+namespace BugTrackerApp.Models.DAL
 {
     public class TicketDAL : ITicketRepo
     {

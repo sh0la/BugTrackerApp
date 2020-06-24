@@ -176,6 +176,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\ProjectUsersController.cs" />
     <Compile Include="Controllers\TicketAttachmentsController.cs" />
     <Compile Include="Controllers\TicketCommentsController.cs" />
     <Compile Include="Controllers\TicketHistoriesController.cs" />
@@ -254,6 +255,10 @@
     <Compile Include="Migrations\202006241857230_AddTicketNotificationController.cs" />
     <Compile Include="Migrations\202006241857230_AddTicketNotificationController.designer.cs">
       <DependentUpon>202006241857230_AddTicketNotificationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006241912299_addProjectUserController.cs" />
+    <Compile Include="Migrations\202006241912299_addProjectUserController.designer.cs">
+      <DependentUpon>202006241912299_addProjectUserController.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -504,6 +509,11 @@
     <Content Include="Views\TicketTypes\Details.cshtml" />
     <Content Include="Views\TicketTypes\Edit.cshtml" />
     <Content Include="Views\TicketTypes\Index.cshtml" />
+    <Content Include="Views\ProjectUsers\Create.cshtml" />
+    <Content Include="Views\ProjectUsers\Delete.cshtml" />
+    <Content Include="Views\ProjectUsers\Details.cshtml" />
+    <Content Include="Views\ProjectUsers\Edit.cshtml" />
+    <Content Include="Views\ProjectUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -570,6 +580,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006241857230_AddTicketNotificationController.resx">
       <DependentUpon>202006241857230_AddTicketNotificationController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241912299_addProjectUserController.resx">
+      <DependentUpon>202006241912299_addProjectUserController.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

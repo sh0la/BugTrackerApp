@@ -178,6 +178,7 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TicketAttachmentsController.cs" />
     <Compile Include="Controllers\TicketCommentsController.cs" />
+    <Compile Include="Controllers\TicketHistoriesController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -241,6 +242,10 @@
     <Compile Include="Migrations\202006211013254_AddTicketDALAndBL.cs" />
     <Compile Include="Migrations\202006211013254_AddTicketDALAndBL.designer.cs">
       <DependentUpon>202006211013254_AddTicketDALAndBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006241852478_addControllers.cs" />
+    <Compile Include="Migrations\202006241852478_addControllers.designer.cs">
+      <DependentUpon>202006241852478_addControllers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -466,6 +471,11 @@
     <Content Include="Views\TicketComments\Details.cshtml" />
     <Content Include="Views\TicketComments\Edit.cshtml" />
     <Content Include="Views\TicketComments\Index.cshtml" />
+    <Content Include="Views\TicketHistories\Create.cshtml" />
+    <Content Include="Views\TicketHistories\Delete.cshtml" />
+    <Content Include="Views\TicketHistories\Details.cshtml" />
+    <Content Include="Views\TicketHistories\Edit.cshtml" />
+    <Content Include="Views\TicketHistories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -526,6 +536,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006211013254_AddTicketDALAndBL.resx">
       <DependentUpon>202006211013254_AddTicketDALAndBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006241852478_addControllers.resx">
+      <DependentUpon>202006241852478_addControllers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

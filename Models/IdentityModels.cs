@@ -64,6 +64,6 @@ namespace BugTrackerApp.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<BugTrackerApp.Models.ApplicationUser> ApplicationUsers { get; set; }
+        //public System.Data.Entity.DbSet<BugTrackerApp.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

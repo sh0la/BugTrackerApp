@@ -39,7 +39,7 @@ namespace BugTrackerApp.Controllers
         // GET: TicketAttachments/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "Email");
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email");
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title");
             return View();
         }
@@ -58,7 +58,7 @@ namespace BugTrackerApp.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "Email", ticketAttachment.ApplicationUserId);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", ticketAttachment.ApplicationUserId);
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
             return View(ticketAttachment);
         }
@@ -75,7 +75,7 @@ namespace BugTrackerApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "Email", ticketAttachment.ApplicationUserId);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", ticketAttachment.ApplicationUserId);
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
             return View(ticketAttachment);
         }
@@ -93,7 +93,7 @@ namespace BugTrackerApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicationUserId = new SelectList(db.ApplicationUsers, "Id", "Email", ticketAttachment.ApplicationUserId);
+            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", ticketAttachment.ApplicationUserId);
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
             return View(ticketAttachment);
         }

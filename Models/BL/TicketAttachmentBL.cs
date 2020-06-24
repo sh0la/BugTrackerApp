@@ -16,6 +16,12 @@ namespace BugTrackerApp.Models.BL
             _repo = repo;
         }
 
+        public void Add(TicketAttachment attachment)
+        {
+            if (attachment != null)
+                _repo.Add(attachment);
+        }
+
         public void AddNewTicketAttachment(int ticketId, string userId, string filePath, string description)
         {
             TicketAttachment ticketAttachment = new TicketAttachment();
@@ -41,7 +47,10 @@ namespace BugTrackerApp.Models.BL
 
         public void Delete(int id)
         {
-            _repo.Delete(id);
+            TicketAttachment attachment = _repo.Get(id);
+
+            if (attachment != null)
+                _repo.Delete(id);
         }
     }
 }

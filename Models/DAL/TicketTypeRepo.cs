@@ -17,9 +17,9 @@ namespace BugTrackerApp.Models.DAL
             return db.TicketTypes.ToList();
         }
 
-        public void Add(string name)
+        public void Add(TicketType ticketType)
         {
-            var ticketType = new TicketType { Name = name };
+            db.TicketTypes.Add(ticketType);
             db.SaveChanges();
         }
 

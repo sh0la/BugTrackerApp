@@ -16,9 +16,12 @@ namespace BugTrackerApp.Models.BL
         }
 
 
-        public void AddNotification(Ticket ticket, ApplicationUser user)
+        public void CreateNotification(Ticket ticket, ApplicationUser user)
         {
-            _repo.Add(ticket, user);
+            var ticketNotification = new TicketNotification();
+            ticketNotification.ApplicationUserId = user.Id;
+            ticketNotification.TicketId = ticket.Id;
+            _repo.Add(ticketNotification);
             
         }
 

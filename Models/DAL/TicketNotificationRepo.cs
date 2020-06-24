@@ -9,11 +9,9 @@ namespace BugTrackerApp.Models.DAL
     {
         static ApplicationDbContext db = new ApplicationDbContext();
         
-        public void Add(Ticket ticket, ApplicationUser user)
+        public void Add(TicketNotification ticketNotification)
         {
-            var ticketNotification = new TicketNotification();
-            ticketNotification.ApplicationUserId = user.Id;
-            ticketNotification.TicketId = ticket.Id;
+            db.TicketNotifications.Add(ticketNotification);
             db.SaveChanges();
         }
 

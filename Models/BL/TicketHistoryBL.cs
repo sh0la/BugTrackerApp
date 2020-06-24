@@ -25,5 +25,14 @@ namespace BugTrackerApp.Models.BL
             return _repo.Get();
         }
 
+        public void CreateTicketHistory(Ticket ticket)
+        {
+            var ticketHistory = new TicketHistory();
+            //var currentTicketHistory = _repo.TicketHistories.Find(ticket.Id);
+            //Get the last history
+            //compare the properties
+            //update the new history
+
+        }
     }
 }

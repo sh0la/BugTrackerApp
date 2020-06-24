@@ -9,13 +9,11 @@ namespace BugTrackerApp.Models.DAL
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        public void Add(Ticket ticket)
+        public void Add(TicketHistory ticketHistory)
         {
-            var ticketHistory = new TicketHistory();
-            var currentTicketHistory = db.TicketHistories.Find(ticket.Id);
-            //Get the last history
-            //compare the properties
-            //update the new history
+            
+            db.TicketHistories.Add(ticketHistory);
+            db.SaveChanges();
             
         }
 

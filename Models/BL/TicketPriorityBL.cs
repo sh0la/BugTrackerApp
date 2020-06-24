@@ -17,7 +17,9 @@ namespace BugTrackerApp.Models.BL
 
         public void CreatePriority(string name)
         {
-            _repo.Add(name);
+            var ticketPriority = new TicketPriority();
+            ticketPriority.Name = name;
+            _repo.Add(ticketPriority);
         }
 
         public void EditPriorityName(int Id)

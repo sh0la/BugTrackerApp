@@ -10,10 +10,9 @@ namespace BugTrackerApp.Models.DAL
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        public void Add(string name)
+        public void Add(TicketPriority ticketPriority)
         {
-            var ticketPriority = new TicketPriority();
-            ticketPriority.Name = name;
+            db.TicketPriorities.Add(ticketPriority);
             db.SaveChanges();
         }
 

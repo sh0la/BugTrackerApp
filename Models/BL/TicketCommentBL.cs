@@ -17,7 +17,11 @@ namespace BugTrackerApp.Models.BL
 
         public void CreateTicketComment(Ticket ticket, ApplicationUser user, string comment)
         {
-            _repo.Create(ticket, user, comment);
+            var ticketComment = new TicketComment();
+            ticketComment.TicketId = ticket.Id;
+            ticketComment.Comment = comment;
+            ticketComment.ApplicationUserId = user.Id;
+            _repo.Add(ticketComment);
         }
 
         public TicketComment GetATicketComment(int Id)

@@ -22,7 +22,8 @@ namespace BugTrackerApp.Models.BL
 
         public void CreateTicketTypeName(string name)
         {
-            _repo.Add(name);
+            var ticketType = new TicketType { Name = name };
+            _repo.Add(ticketType);
         }
 
         public void EditTicketTypeName(TicketType ticketType)

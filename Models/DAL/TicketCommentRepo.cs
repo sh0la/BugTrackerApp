@@ -10,14 +10,6 @@ namespace BugTrackerApp.Models.DAL
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public void Create(Ticket ticket, ApplicationUser user, string comment)
-        {
-            var ticketComment = new TicketComment();
-            ticketComment.TicketId = ticket.Id;
-            ticketComment.Comment = comment;
-            ticketComment.ApplicationUserId = user.Id;
-            db.SaveChanges();
-        }
 
         public void Add(TicketComment ticketComment)
         {

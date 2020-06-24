@@ -17,6 +17,12 @@ namespace BugTrackerApp.Models.DAL
             db.SaveChanges();
         }
 
+        public IList<TicketNotification> GetNotifications()
+        {
+            return db.TicketNotifications.ToList();
+
+        }
+
 
 
 

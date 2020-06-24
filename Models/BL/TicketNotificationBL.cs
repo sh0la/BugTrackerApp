@@ -19,7 +19,12 @@ namespace BugTrackerApp.Models.BL
         public void AddNotification(Ticket ticket, ApplicationUser user)
         {
             _repo.Add(ticket, user);
+            
         }
 
+        public IList<TicketNotification> GetNotifications()
+        {
+            return _repo.GetNotifications();
+        }
     }
 }

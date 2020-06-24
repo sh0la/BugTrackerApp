@@ -46,9 +46,24 @@ namespace BugTrackerApp.Models
            
         }
 
-        public void RemoveAProjectManagerFromAProject(ApplicationUser oldProjectManager, Project project, ApplicationUser newProjectManager)
+        public void RemoveAProjectManagerFromAProject(Project project, ApplicationUser newProjectManager)
         {
-            _repo.RemoveUserFromProject(oldProjectManager, project, newProjectManager);
+            _repo.RemoveUserFromProject(project, newProjectManager);
+        }
+
+        public void AddAProjectManagerToAProject(Project project, ApplicationUser newProjectManager)
+        {
+            _repo.AddUserToAProject(project, newProjectManager);
+        }
+
+        public void AddDeveloperToATicket(Ticket ticket, ApplicationUser developer)
+        {
+            _repo.ChangeDeveloperOnTicket(ticket, developer);
+        }
+
+        public void RemoveDeveloperFromATicket(Ticket ticket, ApplicationUser developer)
+        {
+            _repo.ChangeDeveloperOnTicket(ticket, developer);
         }
 
         public ApplicationUser GetAUser(string Id)

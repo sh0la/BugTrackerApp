@@ -68,12 +68,29 @@ namespace BugTrackerApp.Models
             db.SaveChanges();
         }
 
-        public void RemoveUserFromProject(ApplicationUser user, Project project, ApplicationUser newUser)
+        public void AddUserToAProject(Project project, ApplicationUser newUser)
         {
-            var currentProject = db.Projects.Find(project.Id);
-            currentProject.Name = newUser.UserName;
+            var currentProject = db.ProjectUsers.Find(project.Id);
+            currentProject.ApplicationUserId = newUser.Id;
             db.SaveChanges();
         }
+
+        public void RemoveUserFromProject(Project project, ApplicationUser newUser)
+        {
+            var currentProject = db.ProjectUsers.Find(project.Id);
+            currentProject.ApplicationUserId = newUser.Id;
+            db.SaveChanges();
+        }
+
+        public void ChangeDeveloperOnTicket(Ticket ticket, ApplicationUser user)
+        {
+            var currentTicket = db.Tickets.Find(ticket.Id);
+            currentTicket.AssignedToUserId = user.Id;
+            db.SaveChanges();
+        }
+
+
+
 
         public IList<ApplicationUser> GetAllUsers()
         {

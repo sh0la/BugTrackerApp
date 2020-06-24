@@ -240,6 +240,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BL\TicketAttachmentBL.cs" />
+    <Compile Include="Models\BL\TicketCommentBL.cs" />
     <Compile Include="Models\BL\TicketNotificationBL.cs" />
     <Compile Include="Models\BL\TicketPriorityBL.cs" />
     <Compile Include="Models\BL\TicketStatusBL.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -15,6 +16,7 @@ namespace BugTrackerApp.Models.DAL
             ticketComment.TicketId = ticket.Id;
             ticketComment.Comment = comment;
             ticketComment.ApplicationUserId = user.Id;
+            db.SaveChanges();
         }
 
         public void Add(TicketComment ticketComment)
@@ -35,6 +37,16 @@ namespace BugTrackerApp.Models.DAL
             return db.TicketComments.Find(id);
 
         }
+
+        public IList<TicketComment> Get()
+        {
+            return db.TicketComments.ToList();
+        }
         
+        public void Edit(TicketComment ticketComment)
+        {
+            db.Entry(ticketComment).State = EntityState.Modified;
+            db.SaveChanges();
+        }
     }
 }

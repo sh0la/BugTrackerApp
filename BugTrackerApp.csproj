@@ -180,6 +180,7 @@
     <Compile Include="Controllers\TicketCommentsController.cs" />
     <Compile Include="Controllers\TicketHistoriesController.cs" />
     <Compile Include="Controllers\TicketNotificationsController.cs" />
+    <Compile Include="Controllers\TicketPrioritiesController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TicketStatusController.cs" />
     <Compile Include="Global.asax.cs">
@@ -492,6 +493,11 @@
     <Content Include="Views\TicketStatus\Details.cshtml" />
     <Content Include="Views\TicketStatus\Edit.cshtml" />
     <Content Include="Views\TicketStatus\Index.cshtml" />
+    <Content Include="Views\TicketPriorities\Create.cshtml" />
+    <Content Include="Views\TicketPriorities\Delete.cshtml" />
+    <Content Include="Views\TicketPriorities\Details.cshtml" />
+    <Content Include="Views\TicketPriorities\Edit.cshtml" />
+    <Content Include="Views\TicketPriorities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

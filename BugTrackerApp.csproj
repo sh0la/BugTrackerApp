@@ -240,6 +240,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BL\ProjectBL.cs" />
+    <Compile Include="Models\BL\ProjectUserBL.cs" />
     <Compile Include="Models\BL\TicketAttachmentBL.cs" />
     <Compile Include="Models\BL\TicketCommentBL.cs" />
     <Compile Include="Models\BL\TicketHistoryBL.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Models\BL\TicketStatusBL.cs" />
     <Compile Include="Models\BL\TicketTypeBL.cs" />
     <Compile Include="Models\DAL\ProjectRepo.cs" />
+    <Compile Include="Models\DAL\ProjectUserRepo.cs" />
     <Compile Include="Models\DAL\TicketAttachmentRepo.cs" />
     <Compile Include="Models\DAL\TicketCommentRepo.cs" />
     <Compile Include="Models\DAL\TicketHistoryRepo.cs" />

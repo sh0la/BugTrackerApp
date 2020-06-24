@@ -241,11 +241,13 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BL\TicketAttachmentBL.cs" />
     <Compile Include="Models\BL\TicketNotificationBL.cs" />
+    <Compile Include="Models\BL\TicketPriorityBL.cs" />
     <Compile Include="Models\BL\TicketStatusBL.cs" />
     <Compile Include="Models\DAL\TicketAttachmentRepo.cs" />
     <Compile Include="Models\DAL\TicketCommentRepo.cs" />
     <Compile Include="Models\DAL\TicketHistoryRepo.cs" />
     <Compile Include="Models\DAL\TicketNotificationRepo.cs" />
+    <Compile Include="Models\DAL\TicketPriorityRepo.cs" />
     <Compile Include="Models\DAL\TicketStatusRepo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ITicketRepo.cs" />

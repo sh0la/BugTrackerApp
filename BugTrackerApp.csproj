@@ -183,6 +183,7 @@
     <Compile Include="Controllers\TicketPrioritiesController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Controllers\TicketStatusController.cs" />
+    <Compile Include="Controllers\TicketTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -498,6 +499,11 @@
     <Content Include="Views\TicketPriorities\Details.cshtml" />
     <Content Include="Views\TicketPriorities\Edit.cshtml" />
     <Content Include="Views\TicketPriorities\Index.cshtml" />
+    <Content Include="Views\TicketTypes\Create.cshtml" />
+    <Content Include="Views\TicketTypes\Delete.cshtml" />
+    <Content Include="Views\TicketTypes\Details.cshtml" />
+    <Content Include="Views\TicketTypes\Edit.cshtml" />
+    <Content Include="Views\TicketTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

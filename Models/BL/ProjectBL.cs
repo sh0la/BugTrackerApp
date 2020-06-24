@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using BugTrackerApp.Models.DAL;
 
 namespace BugTrackerApp.Models.BL
 {
@@ -26,12 +27,15 @@ namespace BugTrackerApp.Models.BL
 
         public void CreateAProject(string name)
         {
-            _repo.Create(name);
+            Project project = new Project();
+            project.Name = name;
+            _repo.Add(project);
+         
         }
 
-        public void EditAProject(string name)
+        public void EditAProject(Project project)
         {
-            _repo.Edit(name);
+            _repo.Edit(project);
         }
 
 

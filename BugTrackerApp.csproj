@@ -247,6 +247,7 @@
     <Compile Include="Models\BL\TicketPriorityBL.cs" />
     <Compile Include="Models\BL\TicketStatusBL.cs" />
     <Compile Include="Models\BL\TicketTypeBL.cs" />
+    <Compile Include="Models\DAL\ProjectRepo.cs" />
     <Compile Include="Models\DAL\TicketAttachmentRepo.cs" />
     <Compile Include="Models\DAL\TicketCommentRepo.cs" />
     <Compile Include="Models\DAL\TicketHistoryRepo.cs" />

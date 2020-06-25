@@ -20,6 +20,15 @@ namespace BugTrackerApp.Models.BL
             return _repo.Get(id);
         } 
 
+        public void CreateProjectUser(int projectId, string userId)
+        {
+            var projectUser = new ProjectUser();
+            projectUser.ProjectId = projectId;
+            projectUser.ApplicationUserId = userId;
+            _repo.Add(projectUser);
+            
+        }
+
 
     }
 }

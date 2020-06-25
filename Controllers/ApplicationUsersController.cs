@@ -7,12 +7,27 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerApp.Models;
+using BugTrackerApp.Models.BL;
+using Microsoft.AspNet.Identity;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace BugTrackerApp.Controllers
 {
     public class ApplicationUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        private UserBL _repo;
+
+        public ApplicationUsersController()
+        {
+
+        }
+
+        public ApplicationUsersController(UserBL repo)
+        {
+            _repo = repo;
+        }
 
         // GET: ApplicationUsers
         public ActionResult Index()
@@ -114,6 +129,46 @@ namespace BugTrackerApp.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult DashboardTemp()
+        {
+            var tickets = db.Tickets.ToList();
+            var currentUserId = User.Identity.GetUserId();
+            var currentUser = db.Users.Find(currentUserId);
+            return RedirectToAction("Index", "Tickets", tickets);
+        }
+
+        [HttpGet]
+        public ActionResult AddUserToProject()
+        {
+            var projectUser = new ProjectUserViewModel { };
+            projectUser.Users = db.Users;
+            projectUser.Projects = db.Projects;
+            ViewBag.UserId = new SelectList(projectUser.Users, "Id", "UserName");
+            ViewBag.ProjectId = new SelectList(projectUser.Projects, "Id", "Name");
+
+            return View(projectUser);
+        }
+
+        [HttpPost]
+        public ActionResult AddUserToProject(string userId, int projectId)
+        {
+            var projectUser = new ProjectUserViewModel { };
+            projectUser.Users = db.Users;
+            projectUser.Projects = db.Projects;
+            ViewBag.UserId = new SelectList(projectUser.Users, "Id", "UserName");
+            ViewBag.ProjectId = new SelectList(projectUser.Projects, "Id", "Name");
+
+
+            //_repo.AddAProjectManagerToAProject(projectId, userId);
+            return View();
+        }
+
+        //public ActionResult AddDeveloperToTicket(Ticket ticket, string userId)
+        //{
+        //    ticket.AssignedToUserId = userId;
+        //    return View();
+        //}
 
         protected override void Dispose(bool disposing)
         {

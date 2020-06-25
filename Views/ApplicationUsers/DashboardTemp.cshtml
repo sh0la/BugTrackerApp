@@ -1,0 +1,16 @@
+﻿@model BugTrackerApp.Models.ApplicationUser
+@{
+    ViewBag.Title = "DashboardTemp";
+}
+
+<h2>DashboardTemp</h2>
+
+
+<p>
+    @Html.ActionLink("Create New Ticket", "Create", "Tickets")
+    @Html.ActionLink("Create New Project", "Create", "Projects")
+    @Html.ActionLink("Assign Project Manager To Project", "Create", "ProjectUsers")
+    @Html.ActionLink("Add Developer To Ticket", "AddDeveloperToTicket")
+
+</p>
+

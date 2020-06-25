@@ -17,6 +17,11 @@ namespace BugTrackerApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private TicketBL _repo;
 
+        public TicketsController()
+        {
+
+        }
+
         public TicketsController(TicketBL repo)
         {
             _repo = repo;
@@ -92,6 +97,7 @@ namespace BugTrackerApp.Controllers
             {
                 return HttpNotFound();
             }
+            
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "Email", ticket.AssignedToUserId);
             ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "Email", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);

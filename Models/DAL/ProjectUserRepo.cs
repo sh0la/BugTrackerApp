@@ -14,5 +14,11 @@ namespace BugTrackerApp.Models.DAL
             return db.ProjectUsers.Find(id);
            
         }
+
+        public void Add(ProjectUser projectUser)
+        {
+            db.ProjectUsers.Add(projectUser);
+            db.SaveChanges();
+        }
     }
 }

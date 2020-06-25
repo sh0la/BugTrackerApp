@@ -9,10 +9,11 @@ namespace BugTrackerApp.Models.BL
     public class UserBL
     {
         private UserDAL _repo;
-
-        public UserBL(UserDAL repo)
+        private ProjectUserBL _puRepo;
+        public UserBL(UserDAL repo, ProjectUserBL puRepo)
         {
             _repo = repo;
+            _puRepo = puRepo;
         }
 
         public void CreateRole(string roleName)
@@ -52,9 +53,9 @@ namespace BugTrackerApp.Models.BL
             _repo.RemoveUserFromProject(project, newProjectManager);
         }
 
-        public void AddAProjectManagerToAProject(Project project, ApplicationUser newProjectManager)
+        public void AddAProjectManagerToAProject(int projectId, string userId )
         {
-            _repo.AddUserToAProject(project, newProjectManager);
+            _puRepo.CreateProjectUser(projectId, userId);
         }
 
         public void AddDeveloperToATicket(Ticket ticket, ApplicationUser developer)

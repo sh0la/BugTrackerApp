@@ -260,6 +260,14 @@
     <Compile Include="Migrations\202006241912299_addProjectUserController.designer.cs">
       <DependentUpon>202006241912299_addProjectUserController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006251244529_MakeUpdatedPropertyInTicketTableNullable.cs" />
+    <Compile Include="Migrations\202006251244529_MakeUpdatedPropertyInTicketTableNullable.designer.cs">
+      <DependentUpon>202006251244529_MakeUpdatedPropertyInTicketTableNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006251259521_addDisplayNamesToTicketTable.cs" />
+    <Compile Include="Migrations\202006251259521_addDisplayNamesToTicketTable.designer.cs">
+      <DependentUpon>202006251259521_addDisplayNamesToTicketTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BL\ProjectBL.cs" />
@@ -583,6 +591,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006241912299_addProjectUserController.resx">
       <DependentUpon>202006241912299_addProjectUserController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006251244529_MakeUpdatedPropertyInTicketTableNullable.resx">
+      <DependentUpon>202006251244529_MakeUpdatedPropertyInTicketTableNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006251259521_addDisplayNamesToTicketTable.resx">
+      <DependentUpon>202006251259521_addDisplayNamesToTicketTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

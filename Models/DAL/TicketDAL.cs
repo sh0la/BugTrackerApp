@@ -16,7 +16,7 @@ namespace BugTrackerApp.Models.DAL
             db.SaveChanges();
         }
 
-        public Ticket GetTicket(int Id)
+        public Ticket Get(int Id)
         {
             return db.Tickets.Find(Id);
         }
@@ -25,6 +25,11 @@ namespace BugTrackerApp.Models.DAL
         {
             db.Entry(ticket).State = EntityState.Modified;
             db.SaveChanges();
+        }
+
+        public IList<Ticket> Get()
+        {
+            return db.Tickets.ToList();
         }
     }
 }

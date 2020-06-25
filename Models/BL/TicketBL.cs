@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using BugTrackerApp.Models.DAL;
+
 
 namespace BugTrackerApp.Models.BL
 {
@@ -16,7 +18,12 @@ namespace BugTrackerApp.Models.BL
 
         public Ticket GetTicket(int Id)
         {
-            return _repo.GetTicket(Id);
+            return _repo.Get(Id);
+        }
+
+        public IList<Ticket> GetAllTickets()
+        {
+            return _repo.Get();
         }
 
         public void AddTicket(Ticket ticket)
@@ -27,7 +34,7 @@ namespace BugTrackerApp.Models.BL
 
         public void EditTicket(int Id)
         {
-            var ticket = _repo.GetTicket(Id);
+            var ticket = _repo.Get(Id);
             _repo.Edit(ticket);
         }
     }

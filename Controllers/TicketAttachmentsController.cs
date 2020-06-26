@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BugTrackerApp.Controllers
 {
@@ -39,7 +40,6 @@ namespace BugTrackerApp.Controllers
         // GET: TicketAttachments/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email");
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title");
             return View();
         }
@@ -53,12 +53,12 @@ namespace BugTrackerApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                ticketAttachment.ApplicationUserId = User.Identity.GetUserId();
                 db.TicketAttachments.Add(ticketAttachment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", ticketAttachment.ApplicationUserId);
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
             return View(ticketAttachment);
         }
@@ -75,7 +75,6 @@ namespace BugTrackerApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", ticketAttachment.ApplicationUserId);
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketAttachment.TicketId);
             return View(ticketAttachment);
         }

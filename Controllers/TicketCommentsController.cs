@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BugTrackerApp.Controllers
 {
@@ -39,7 +40,6 @@ namespace BugTrackerApp.Controllers
         // GET: TicketComments/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email");
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title");
             return View();
         }
@@ -53,12 +53,13 @@ namespace BugTrackerApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                ticketComment.ApplicationUserId = User.Identity.GetUserId();
                 db.TicketComments.Add(ticketComment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", ticketComment.ApplicationUserId);
+            ViewBag.ApplicationUserId = User.Identity.GetUserId();
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
             return View(ticketComment);
         }
@@ -75,7 +76,6 @@ namespace BugTrackerApp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", ticketComment.ApplicationUserId);
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
             return View(ticketComment);
         }
@@ -89,11 +89,12 @@ namespace BugTrackerApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                ticketComment.ApplicationUserId = User.Identity.GetUserId();
                 db.Entry(ticketComment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", ticketComment.ApplicationUserId);
+            ViewBag.ApplicationUserId = User.Identity.GetUserId();
             ViewBag.TicketId = new SelectList(db.Tickets, "Id", "Title", ticketComment.TicketId);
             return View(ticketComment);
         }

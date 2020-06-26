@@ -1,4 +1,4 @@
-﻿@model BugTrackerApp.Models.ApplicationUser
+﻿@model BugTrackerApp.Models.PMDashboardViewModel
 @{
     ViewBag.Title = "DashboardTemp";
 }
@@ -8,9 +8,43 @@
 
 <p>
     @Html.ActionLink("Create New Ticket", "Create", "Tickets")
+</p>
+<p>
     @Html.ActionLink("Create New Project", "Create", "Projects")
+</p>
+<p>
     @Html.ActionLink("Assign Project Manager To Project", "Create", "ProjectUsers")
+</p>
+<p>
     @Html.ActionLink("Add Developer To Ticket", "AddDeveloperToTicket")
-
 </p>
 
+
+<p>
+    @Html.ActionLink("New Project", "Create", "Projects")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Projects)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Projects)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Projects", new { id = item.Id }, null) |
+                @Html.ActionLink("Details", "Details", "Projects", new { id = item.Id }, null) |
+                @Html.ActionLink("Delete", "Delete", "Projects", new { id = item.Id }, null) |
+                @Html.ActionLink("Tickets", "Index", "Tickets", new { id = item.Id }, null)
+
+            </td>
+        </tr>
+    }
+
+</table>

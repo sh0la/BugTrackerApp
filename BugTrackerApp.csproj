@@ -295,6 +295,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ITicketRepo.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PMDashboardViewModel.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectUser.cs" />
     <Compile Include="Models\ProjectUserViewModel.cs" />

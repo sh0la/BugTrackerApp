@@ -10,6 +10,7 @@ using BugTrackerApp.Models;
 using BugTrackerApp.Models.BL;
 using Microsoft.AspNet.Identity;
 using Microsoft.VisualBasic.ApplicationServices;
+using BugTrackerApp.Models.DAL;
 
 namespace BugTrackerApp.Controllers
 {
@@ -17,17 +18,24 @@ namespace BugTrackerApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        private UserBL _repo;
+        private UserBL _userBL;
+        private UserDAL _userRepo;
+        private ProjectUserBL _puBL;
+        private ProjectUserRepo _puRepo;
+        private ProjectRepo _pRepo;
+        private ProjectBL _pBL;
 
         public ApplicationUsersController()
         {
-
+            _puRepo = new ProjectUserRepo();
+            _puBL = new ProjectUserBL(_puRepo);
+            _userRepo = new UserDAL();
+            _userBL = new UserBL(_userRepo, _puBL);
+            _pRepo = new ProjectRepo();
+            _pBL = new ProjectBL(_pRepo);
         }
 
-        public ApplicationUsersController(UserBL repo)
-        {
-            _repo = repo;
-        }
+      
 
         // GET: ApplicationUsers
         public ActionResult Index()
@@ -132,16 +140,20 @@ namespace BugTrackerApp.Controllers
 
         public ActionResult DashboardTemp()
         {
+            var pmDashboard = new PMDashboardViewModel { };
+            pmDashboard.ApplicationUserId = User.Identity.GetUserId();
+            pmDashboard.Projects = db.Projects;
+
             var tickets = db.Tickets.ToList();
             var currentUserId = User.Identity.GetUserId();
             var currentUser = db.Users.Find(currentUserId);
-            return RedirectToAction("Index", "Tickets", tickets);
+            return View(pmDashboard);
         }
 
         [HttpGet]
         public ActionResult AddUserToProject()
         {
-            var projectUser = new ProjectUserViewModel { };
+            var projectUser = new ProjectUserViewModel ();
             projectUser.Users = db.Users;
             projectUser.Projects = db.Projects;
             ViewBag.UserId = new SelectList(projectUser.Users, "Id", "UserName");
@@ -151,24 +163,69 @@ namespace BugTrackerApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddUserToProject(string userId, int projectId)
+        public ActionResult AddUserToProject(string userId, int projectId, ProjectUserViewModel projectUser)
         {
-            var projectUser = new ProjectUserViewModel { };
-            projectUser.Users = db.Users;
-            projectUser.Projects = db.Projects;
-            ViewBag.UserId = new SelectList(projectUser.Users, "Id", "UserName");
-            ViewBag.ProjectId = new SelectList(projectUser.Projects, "Id", "Name");
+            //var projectUser = new ProjectUserViewModel { };
+            //projectUser.Users = db.Users;
+            //projectUser.Projects = db.Projects;
+            ViewBag.UserId = new SelectList(_userBL.GetAllUsers(), "Id", "UserName");
+            ViewBag.ProjectId = new SelectList(_pBL.GetAllProjects(), "Id", "Name");
 
 
-            //_repo.AddAProjectManagerToAProject(projectId, userId);
-            return View();
+            _userBL.AddAProjectManagerToAProject(projectId, userId);
+            return View(projectUser);
         }
-
+        
         //public ActionResult AddDeveloperToTicket(Ticket ticket, string userId)
         //{
         //    ticket.AssignedToUserId = userId;
         //    return View();
         //}
+
+        // GET: Tickets/Edit/5
+        public ActionResult AddDeveloperToTicket(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Ticket ticket = db.Tickets.Find(id);
+            if (ticket == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "Email", ticket.AssignedToUserId);
+            //ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "Email", ticket.OwnerUserId);
+            //ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
+            //ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
+            //ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
+            //ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
+            return View(ticket);
+        }
+
+        // POST: Tickets/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddDeveloperToTicket([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignedToUserId")] Ticket ticket)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(ticket).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "Email", ticket.AssignedToUserId);
+            //ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "Email", ticket.OwnerUserId);
+            //ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
+            //ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
+            //ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
+            //ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
+            return View(ticket);
+        }
+
 
         protected override void Dispose(bool disposing)
         {

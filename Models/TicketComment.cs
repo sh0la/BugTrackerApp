@@ -14,5 +14,17 @@ namespace BugTrackerApp.Models
         public virtual Ticket Ticket { get; set; }
         public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public TicketComment()
+        {
+            this.Created = DateTime.Now;
+        }
+
+        public TicketComment(DateTime created)
+        {
+            this.Created = created;
+        }
     }
+
+
 }

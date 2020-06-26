@@ -16,5 +16,15 @@ namespace BugTrackerApp.Models
         public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
         public string FileUrl { get; set; }
+
+        public TicketAttachment()
+        {
+            this.Created = DateTime.Now;
+        }
+
+        public TicketAttachment(DateTime Created)
+        {
+            this.Created = Created;
+        }
     }
 }

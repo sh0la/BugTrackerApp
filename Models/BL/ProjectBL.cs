@@ -38,6 +38,11 @@ namespace BugTrackerApp.Models.BL
             _repo.Edit(project);
         }
 
+        public void Add(Project project)
+        {
+            _repo.Add(project);
+        }
+
 
     }
 }

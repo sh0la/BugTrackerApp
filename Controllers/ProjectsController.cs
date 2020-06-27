@@ -7,17 +7,33 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerApp.Models;
+using BugTrackerApp.Models.BL;
+using Microsoft.AspNet.Identity;
 
 namespace BugTrackerApp.Controllers
 {
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ProjectBL _pRepo;
+        private ProjectUserBL _puRepo;
+
+        public ProjectsController()
+        {
+            _pRepo = new ProjectBL();
+            _puRepo = new ProjectUserBL();
+        }
 
         // GET: Projects
         public ActionResult Index()
         {
-            return View(db.Projects.ToList());
+            return View(_pRepo.GetAllProjects());
+        }
+
+        public ActionResult Projects(List<Project> projects, string pageTitle)
+        {
+            ViewBag.Title = pageTitle;
+            return View(projects);
         }
 
         // GET: Projects/Details/5
@@ -27,11 +43,7 @@ namespace BugTrackerApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.Projects.Find(id);
-            if (project == null)
-            {
-                return HttpNotFound();
-            }
+            Project project = _pRepo.GetProject((int)id);
             return View(project);
         }
 
@@ -50,8 +62,9 @@ namespace BugTrackerApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Projects.Add(project);
-                db.SaveChanges();
+                string userId = User.Identity.GetUserId();
+                _pRepo.Add(project);
+                _puRepo.CreateProjectUser(project.Id, userId);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +78,7 @@ namespace BugTrackerApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.Projects.Find(id);
+            Project project = _pRepo.GetProject((int)id);
             if (project == null)
             {
                 return HttpNotFound();

@@ -31,8 +31,6 @@ namespace BugTrackerApp.Controllers
             _tBL = new TicketBL();
         }
 
-      
-
         // GET: ApplicationUsers
         public ActionResult Index()
         {
@@ -231,5 +229,18 @@ namespace BugTrackerApp.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult OwnedProjects()
+        {
+            string userId = User.Identity.GetUserId();
+            ApplicationUser user = _userBL.GetAUser(userId);
+            List<Project> userProjects = _userBL.GetOwnedProjects(userId);
+            return RedirectToAction("Projects", "Projects", new {
+            projects = userProjects,
+            pageTitle = "Owned Projects"
+            });
+        }
+
     }
 }

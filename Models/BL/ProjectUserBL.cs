@@ -29,6 +29,9 @@ namespace BugTrackerApp.Models.BL
             
         }
 
-
+        public List<ProjectUser> GetAll()
+        {
+            return _repo.GetAll();
+        }
     }
 }

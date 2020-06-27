@@ -81,6 +81,11 @@ namespace BugTrackerApp.Models.BL
 
         }
 
-       
+        public List<Project> GetOwnedProjects(string id)
+        {
+            return _puRepo.GetAll().Where(pu => pu.ApplicationUserId == id).Select(pu => pu.Project).ToList();
+        }
+
+
     }
 }

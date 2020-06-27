@@ -20,5 +20,10 @@ namespace BugTrackerApp.Models.DAL
             db.ProjectUsers.Add(projectUser);
             db.SaveChanges();
         }
+
+        public List<ProjectUser> GetAll()
+        {
+            return db.ProjectUsers.ToList();
+        }
     }
 }

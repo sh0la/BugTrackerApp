@@ -276,6 +276,10 @@
     <Compile Include="Migrations\202006261329343_AddConstructorToTicketAttachmentAndTicketCommentClass.designer.cs">
       <DependentUpon>202006261329343_AddConstructorToTicketAttachmentAndTicketCommentClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006271925541_AddSeedForClasses.cs" />
+    <Compile Include="Migrations\202006271925541_AddSeedForClasses.designer.cs">
+      <DependentUpon>202006271925541_AddSeedForClasses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BL\ProjectBL.cs" />
@@ -615,6 +619,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006261329343_AddConstructorToTicketAttachmentAndTicketCommentClass.resx">
       <DependentUpon>202006261329343_AddConstructorToTicketAttachmentAndTicketCommentClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006271925541_AddSeedForClasses.resx">
+      <DependentUpon>202006271925541_AddSeedForClasses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

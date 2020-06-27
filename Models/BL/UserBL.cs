@@ -10,10 +10,10 @@ namespace BugTrackerApp.Models.BL
     {
         private UserDAL _repo;
         private ProjectUserBL _puRepo;
-        public UserBL(UserDAL repo, ProjectUserBL puRepo)
+        public UserBL()
         {
-            _repo = repo;
-            _puRepo = puRepo;
+            _repo = new UserDAL();
+            _puRepo = new ProjectUserBL();
         }
 
         public void CreateRole(string roleName)

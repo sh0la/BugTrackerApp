@@ -10,9 +10,9 @@ namespace BugTrackerApp.Models.BL
     {
         TicketHistoryRepo _repo;
 
-        public TicketHistoryBL(TicketHistoryRepo repo)
+        public TicketHistoryBL()
         {
-            _repo = repo;
+            _repo = new TicketHistoryRepo();
         }
 
         public TicketHistory GetATicketHistory(int Id)

@@ -9,11 +9,11 @@ namespace BugTrackerApp.Models.BL
 {
     public class TicketBL
     {
-        private readonly ITicketRepo _repo;
+        private TicketRepo _repo;
 
-        public TicketBL(ITicketRepo repo)
+        public TicketBL()
         {
-            _repo = repo;
+            _repo = new TicketRepo();
         }
 
         public Ticket GetTicket(int Id)
@@ -23,7 +23,7 @@ namespace BugTrackerApp.Models.BL
 
         public IList<Ticket> GetAllTickets()
         {
-            return _repo.Get();
+            return _repo.GetAll();
         }
 
         public void AddTicket(Ticket ticket)

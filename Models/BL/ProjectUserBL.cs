@@ -10,9 +10,9 @@ namespace BugTrackerApp.Models.BL
     {
         private ProjectUserRepo _repo;
 
-        public ProjectUserBL(ProjectUserRepo repo)
+        public ProjectUserBL()
         {
-            _repo = repo;
+            _repo = new ProjectUserRepo();
         }
 
         public ProjectUser GetProjectUser(int id)

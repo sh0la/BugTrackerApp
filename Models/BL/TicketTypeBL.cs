@@ -10,9 +10,9 @@ namespace BugTrackerApp.Models.BL
     {
         TicketTypeRepo _repo;
 
-        public TicketTypeBL(TicketTypeRepo repo)
+        public TicketTypeBL()
         {
-            _repo = repo;
+            _repo = new TicketTypeRepo();
         }
 
         public IList<TicketType> GetAllTicketTypes()

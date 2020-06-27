@@ -10,9 +10,9 @@ namespace BugTrackerApp.Models.BL
     {
         TicketPriorityRepo _repo;
 
-        public TicketPriorityBL(TicketPriorityRepo repo)
+        public TicketPriorityBL()
         {
-            _repo = repo;
+            _repo = new TicketPriorityRepo();
         }
 
         public void CreatePriority(string name)

@@ -9,11 +9,11 @@ namespace BugTrackerApp.Models.BL
 {
     public class TicketAttachmentBL
     {
-        private TicketAttachmentRepo _repo { get; set; }
+        private TicketAttachmentRepo _repo;
 
-        public TicketAttachmentBL(TicketAttachmentRepo repo)
+        public TicketAttachmentBL()
         {
-            _repo = repo;
+            _repo = new TicketAttachmentRepo();
         }
 
         public void Add(TicketAttachment attachment)

@@ -10,9 +10,9 @@ namespace BugTrackerApp.Models.BL
     {
         TicketCommentRepo _repo;
 
-        public TicketCommentBL(TicketCommentRepo repo)
+        public TicketCommentBL()
         {
-            _repo = repo;
+            _repo = new TicketCommentRepo();
         }
 
         public void CreateTicketComment(Ticket ticket, ApplicationUser user, string comment)

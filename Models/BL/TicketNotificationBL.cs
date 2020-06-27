@@ -12,7 +12,7 @@ namespace BugTrackerApp.Models.BL
 
         public TicketNotificationBL(TicketNotificationRepo repo)
         {
-            _repo = repo;
+            _repo = new TicketNotificationRepo();
         }
 
 

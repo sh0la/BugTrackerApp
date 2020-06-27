@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace BugTrackerApp.Models.DAL
 {
-    public class TicketDAL : ITicketRepo
+    public class TicketDAL 
     {
         ApplicationDbContext db = new ApplicationDbContext();
         

@@ -19,20 +19,16 @@ namespace BugTrackerApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         private UserBL _userBL;
-        private UserDAL _userRepo;
         private ProjectUserBL _puBL;
-        private ProjectUserRepo _puRepo;
-        private ProjectRepo _pRepo;
         private ProjectBL _pBL;
+        private TicketBL _tBL;
 
         public ApplicationUsersController()
         {
-            _puRepo = new ProjectUserRepo();
-            _puBL = new ProjectUserBL(_puRepo);
-            _userRepo = new UserDAL();
-            _userBL = new UserBL(_userRepo, _puBL);
-            _pRepo = new ProjectRepo();
-            _pBL = new ProjectBL(_pRepo);
+            _puBL = new ProjectUserBL();
+            _userBL = new UserBL();
+            _pBL = new ProjectBL();
+            _tBL = new TicketBL();
         }
 
       
@@ -142,11 +138,11 @@ namespace BugTrackerApp.Controllers
         {
             var pmDashboard = new PMDashboardViewModel { };
             pmDashboard.ApplicationUserId = User.Identity.GetUserId();
-            pmDashboard.Projects = db.Projects;
+            pmDashboard.Projects = _pBL.GetAllProjects().ToList();
 
-            var tickets = db.Tickets.ToList();
+            var tickets = _tBL.GetAllTickets().ToList();
             var currentUserId = User.Identity.GetUserId();
-            var currentUser = db.Users.Find(currentUserId);
+            var currentUser = _userBL.GetAUser(currentUserId);
             return View(pmDashboard);
         }
 
@@ -154,7 +150,7 @@ namespace BugTrackerApp.Controllers
         public ActionResult AddUserToProject()
         {
             var projectUser = new ProjectUserViewModel ();
-            projectUser.Users = db.Users;
+            projectUser.Users = _userBL.GetAllUsers().ToList();
             projectUser.Projects = db.Projects;
             ViewBag.UserId = new SelectList(projectUser.Users, "Id", "UserName");
             ViewBag.ProjectId = new SelectList(projectUser.Projects, "Id", "Name");

@@ -503,9 +503,7 @@
     <Content Include="Views\TicketComments\Edit.cshtml" />
     <Content Include="Views\TicketComments\Index.cshtml" />
     <Content Include="Views\TicketHistories\Create.cshtml" />
-    <Content Include="Views\TicketHistories\Delete.cshtml" />
     <Content Include="Views\TicketHistories\Details.cshtml" />
-    <Content Include="Views\TicketHistories\Edit.cshtml" />
     <Content Include="Views\TicketHistories\Index.cshtml" />
     <Content Include="Views\TicketNotifications\Create.cshtml" />
     <Content Include="Views\TicketNotifications\Delete.cshtml" />

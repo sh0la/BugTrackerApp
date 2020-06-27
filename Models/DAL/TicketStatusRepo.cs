@@ -26,5 +26,10 @@ namespace BugTrackerApp.Models.DAL
             db.TicketStatuses.Remove(status);
             db.SaveChanges();
         }
+
+        public List<TicketStatus> GetAll()
+        {
+            return db.TicketStatuses.ToList();
+        }
     }
 }

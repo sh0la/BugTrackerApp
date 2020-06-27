@@ -42,5 +42,10 @@ namespace BugTrackerApp.Models.BL
             if (status != null)
                 _repo.Delete(id);
         }
+
+        public List<TicketStatus> GetAll()
+        {
+            return _repo.GetAll();
+        }
     }
 }

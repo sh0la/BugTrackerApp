@@ -89,10 +89,20 @@ namespace BugTrackerApp.Models.DAL
             db.SaveChanges();
         }
 
-
         public IList<ApplicationUser> GetAllUsers()
         {
             return db.Users.ToList();
+        }
+
+        public ApplicationUser GetUser(string id)
+        {
+            return db.Users.Find(id);
+        }
+
+        public List<Project> GetUserProjects(string id)
+        {
+            var user = db.Users.Find(id);
+            return user.ProjectUsers.Select(pu => pu.Project).ToList();
         }
     }
 }

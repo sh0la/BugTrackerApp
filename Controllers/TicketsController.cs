@@ -44,6 +44,11 @@ namespace BugTrackerApp.Controllers
             return View(tickets);
         }
 
+        public ActionResult Tickets(List<Ticket> tickets)
+        {
+            return View(tickets);
+        }
+
         // GET: Tickets/Details/5
         public ActionResult Details(int? id)
         {

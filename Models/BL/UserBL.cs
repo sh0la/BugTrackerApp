@@ -81,9 +81,20 @@ namespace BugTrackerApp.Models.BL
 
         }
 
-        public List<Project> GetOwnedProjects(string id)
+        public List<Project> GetProjectsOfUser(string id)
         {
-            return _puRepo.GetAll().Where(pu => pu.ApplicationUserId == id).Select(pu => pu.Project).ToList();
+            return _repo.GetUserProjects(id);
+        }
+
+        public List<Ticket> GetAllTicketsOfAllProjectsOfAUser(string id)
+        {
+            return GetProjectsOfUser(id).SelectMany(p => p.Tickets).ToList();
+        }
+
+        public List<Ticket> GetAllTicketsUserIsAssignedTo(string id)
+        {
+            ApplicationUser user = _repo.GetUser(id);
+            return user.AssignedToUserTickets.ToList();
         }
 
 

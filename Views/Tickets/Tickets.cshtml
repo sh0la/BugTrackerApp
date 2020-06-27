@@ -1,0 +1,33 @@
+﻿@model List<BugTrackerApp.Models.Ticket>
+
+<h2>Tickets</h2>
+
+@if (Model.Count == 0)
+{
+    <h3>
+        no tickets found
+    </h3>
+}
+else
+{
+<ul>
+    @foreach (var ticket in Model)
+    {
+        <li>
+            <p>
+                Title : @ticket.Title
+            </p>
+            <p>
+                Description : @ticket.Description
+            </p>
+            <p>
+                Owner : @ticket.OwnerUser.Email
+            </p>
+            <p>
+                Assignend user : @ticket.AssignedToUser.Email
+            </p>
+        </li>
+    }
+</ul>
+}
+

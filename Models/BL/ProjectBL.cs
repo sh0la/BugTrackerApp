@@ -32,7 +32,7 @@ namespace BugTrackerApp.Models.BL
             _repo.Add(project);
          
         }
-
+        
         public void EditAProject(Project project)
         {
             _repo.Edit(project);

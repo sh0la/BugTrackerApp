@@ -22,13 +22,27 @@ namespace BugTrackerApp.Models.BL
 
         public void CreateProjectUser(int projectId, string userId)
         {
-            var projectUser = new ProjectUser();
-            projectUser.ProjectId = projectId;
-            projectUser.ApplicationUserId = userId;
-            _repo.Add(projectUser);
-            
+            if (!_repo.UserInProject(userId, projectId))
+            {
+                var projectUser = new ProjectUser();
+                projectUser.ProjectId = projectId;
+                projectUser.ApplicationUserId = userId;
+                _repo.Add(projectUser);
+            }    
         }
 
+        public void Delete(ProjectUser projectUser)
+        {
+            _repo.Delete(projectUser);
+        }
+
+        public void RemoveUserFromProject(string userId, int projectId)
+        {
+            if (_repo.UserInProject(userId, projectId))
+            {
+                _repo.Delete(userId, projectId);
+            }
+        }
         public List<ProjectUser> GetAll()
         {
             return _repo.GetAll();

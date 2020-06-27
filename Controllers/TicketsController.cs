@@ -15,16 +15,16 @@ namespace BugTrackerApp.Controllers
     public class TicketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private TicketBL _repo;
+        private TicketBL _tRepo;
 
         public TicketsController()
         {
-
+            _tRepo = new TicketBL();
         }
 
         public TicketsController(TicketBL repo)
         {
-            _repo = repo;
+            _tRepo = repo;
         }
 
         // GET: Tickets

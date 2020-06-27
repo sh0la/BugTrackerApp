@@ -90,8 +90,6 @@ namespace BugTrackerApp.Models.DAL
         }
 
 
-
-
         public IList<ApplicationUser> GetAllUsers()
         {
             return db.Users.ToList();

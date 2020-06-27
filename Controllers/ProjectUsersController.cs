@@ -7,18 +7,25 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerApp.Models;
+using BugTrackerApp.Models.DAL;
 
 namespace BugTrackerApp.Controllers
 {
     public class ProjectUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ProjectUserRepo _puRepo;
+
+        public ProjectUsersController()
+        {
+            _puRepo = new ProjectUserRepo();
+        }
 
         // GET: ProjectUsers
         public ActionResult Index()
         {
-            var projectUsers = db.ProjectUsers.Include(p => p.ApplicationUser).Include(p => p.Project);
-            return View(projectUsers.ToList());
+            var projectUsers = _puRepo.GetAll();
+            return View(projectUsers);
         }
 
         // GET: ProjectUsers/Details/5
@@ -28,11 +35,7 @@ namespace BugTrackerApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProjectUser projectUser = db.ProjectUsers.Find(id);
-            if (projectUser == null)
-            {
-                return HttpNotFound();
-            }
+            ProjectUser projectUser = _puRepo.Get((int)id);
             return View(projectUser);
         }
 
@@ -53,8 +56,7 @@ namespace BugTrackerApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ProjectUsers.Add(projectUser);
-                db.SaveChanges();
+                _puRepo.Add(projectUser);
                 return RedirectToAction("Index");
             }
 
@@ -70,7 +72,7 @@ namespace BugTrackerApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProjectUser projectUser = db.ProjectUsers.Find(id);
+            ProjectUser projectUser = _puRepo.Get((int)id);
             if (projectUser == null)
             {
                 return HttpNotFound();
@@ -105,11 +107,7 @@ namespace BugTrackerApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProjectUser projectUser = db.ProjectUsers.Find(id);
-            if (projectUser == null)
-            {
-                return HttpNotFound();
-            }
+            ProjectUser projectUser = _puRepo.Get((int)id);
             return View(projectUser);
         }
 
@@ -118,9 +116,8 @@ namespace BugTrackerApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ProjectUser projectUser = db.ProjectUsers.Find(id);
-            db.ProjectUsers.Remove(projectUser);
-            db.SaveChanges();
+            ProjectUser projectUser = _puRepo.Get(id);
+            _puRepo.Delete(projectUser);
             return RedirectToAction("Index");
         }
 

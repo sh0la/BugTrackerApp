@@ -25,5 +25,24 @@ namespace BugTrackerApp.Models.DAL
         {
             return db.ProjectUsers.ToList();
         }
+
+        public void Delete(string userId, int projectId)
+        {
+            ProjectUser projectUser = db.ProjectUsers.First(pu => pu.ApplicationUserId == userId && pu.ProjectId == projectId);
+            db.ProjectUsers.Remove(projectUser);
+            db.SaveChanges();
+        }
+
+        public void Delete(ProjectUser projectUser)
+        {
+            db.ProjectUsers.Remove(projectUser);
+            db.SaveChanges();
+        }
+
+        public bool UserInProject(string userId, int projectId)
+        {
+            ProjectUser projectUser = db.ProjectUsers.FirstOrDefault(pu => pu.ApplicationUserId == userId && pu.ProjectId == projectId);
+            return !(projectUser == null);
+        }
     }
 }

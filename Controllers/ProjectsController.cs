@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BugTrackerApp.Models;
-using BugTrackerApp.Models.BL;
+using BugTrackerApp.BL;
 using Microsoft.AspNet.Identity;
 
 namespace BugTrackerApp.Controllers

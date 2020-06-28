@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BugTrackerApp.Models.DAL;
+using BugTrackerApp.DAL;
+using BugTrackerApp.Models;
 
 
-namespace BugTrackerApp.Models.BL
+namespace BugTrackerApp.BL
 {
     public class TicketBL
     {

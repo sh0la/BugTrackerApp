@@ -282,15 +282,15 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BL\ProjectBL.cs" />
-    <Compile Include="Models\BL\ProjectUserBL.cs" />
-    <Compile Include="Models\BL\TicketAttachmentBL.cs" />
-    <Compile Include="Models\BL\TicketCommentBL.cs" />
-    <Compile Include="Models\BL\TicketHistoryBL.cs" />
-    <Compile Include="Models\BL\TicketNotificationBL.cs" />
-    <Compile Include="Models\BL\TicketPriorityBL.cs" />
-    <Compile Include="Models\BL\TicketStatusBL.cs" />
-    <Compile Include="Models\BL\TicketTypeBL.cs" />
+    <Compile Include="BL\ProjectBL.cs" />
+    <Compile Include="BL\ProjectUserBL.cs" />
+    <Compile Include="BL\TicketAttachmentBL.cs" />
+    <Compile Include="BL\TicketCommentBL.cs" />
+    <Compile Include="BL\TicketHistoryBL.cs" />
+    <Compile Include="BL\TicketNotificationBL.cs" />
+    <Compile Include="BL\TicketPriorityBL.cs" />
+    <Compile Include="BL\TicketStatusBL.cs" />
+    <Compile Include="BL\TicketTypeBL.cs" />
     <Compile Include="Models\DAL\ProjectRepo.cs" />
     <Compile Include="Models\DAL\ProjectUserRepo.cs" />
     <Compile Include="Models\DAL\TicketAttachmentRepo.cs" />
@@ -309,7 +309,7 @@
     <Compile Include="Models\ProjectUserViewModel.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\TicketAttachment.cs" />
-    <Compile Include="Models\BL\TicketBL.cs" />
+    <Compile Include="BL\TicketBL.cs" />
     <Compile Include="Models\TicketComment.cs" />
     <Compile Include="Models\DAL\TicketDAL.cs" />
     <Compile Include="Models\TicketHistory.cs" />
@@ -317,7 +317,7 @@
     <Compile Include="Models\TicketPriority.cs" />
     <Compile Include="Models\TicketStatus.cs" />
     <Compile Include="Models\TicketType.cs" />
-    <Compile Include="Models\BL\UserBL.cs" />
+    <Compile Include="BL\UserBL.cs" />
     <Compile Include="Models\DAL\UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

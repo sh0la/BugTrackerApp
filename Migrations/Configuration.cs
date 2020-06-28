@@ -8,7 +8,7 @@
     using System.Web.Configuration;
     using System.Web.Security;
     using BugTrackerApp.Models;
-    using BugTrackerApp.Models.BL;
+    using BugTrackerApp.BL;
     using BugTrackerApp.Models.DAL;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;

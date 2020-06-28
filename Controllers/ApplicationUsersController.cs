@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using BugTrackerApp.Models;
-using BugTrackerApp.Models.BL;
+using BugTrackerApp.BL;
 using Microsoft.AspNet.Identity;
-using Microsoft.VisualBasic.ApplicationServices;
-using BugTrackerApp.Models.DAL;
+using BugTrackerApp.Models.BL;
 using BugTrackerApp.Models.VM;
 
 namespace BugTrackerApp.Controllers

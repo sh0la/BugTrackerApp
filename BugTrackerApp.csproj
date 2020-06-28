@@ -323,6 +323,8 @@
     <Compile Include="Models\TicketType.cs" />
     <Compile Include="BL\UserBL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="Models\userPermisionsVM.cs" />
+    <Compile Include="Models\UserRolesVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

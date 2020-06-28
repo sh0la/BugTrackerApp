@@ -145,5 +145,11 @@ namespace BugTrackerApp.Controllers
             List<Ticket> tickets = _tRepo.OwnedTickets(userId);
             return View(tickets);
         }
+
+        public ActionResult AssignedToTickets()
+        {
+            string userId = User.Identity.GetUserId();
+            return View(_uBL.GetAllTicketsUserIsAssignedTo(userId));
+        }
     }
 }

@@ -1,0 +1,103 @@
+﻿@model BugTrackerApp.Models.VM.UserRolesVM
+
+<h1>
+    User Permisions
+</h1>
+
+<div>
+    <h2>
+        Admins
+    </h2>
+    @if (Model.Admins.Count == 0)
+    {
+        <h4>No admins found</h4>
+    }
+    else
+    {
+        <ol>
+            @foreach (var user in Model.Admins)
+            {
+                <li>
+                    <p>
+                        user email : @user.Email
+                    </p>
+                </li>
+            }
+        </ol>
+    }
+</div>
+
+<div>
+    <h2>
+        Project Managers
+    </h2>
+    @if (Model.PMs.Count == 0)
+    {
+        <h4>
+            no Project managers found
+        </h4>
+    }
+    else
+    {
+        <ol>
+            @foreach (var user in Model.PMs)
+            {
+                <li>
+                    <p>
+                        user email : @user.Email
+                    </p>
+                </li>
+            }
+        </ol>
+    }
+</div>
+
+<div>
+    <h2>
+        Developers
+    </h2>
+    @if (Model.Devs.Count == 0)
+    {
+        <h4>
+            no developers found
+        </h4>
+    }
+    else
+    {
+        <ol>
+            @foreach (var user in Model.Devs)
+            {
+                <li>
+                    <p>
+                        user email : @user.Email
+                    </p>
+                </li>
+            }
+        </ol>
+    }
+</div>
+
+
+<div>
+    <h2>
+        Submmiters
+    </h2>
+    @if (Model.Submitters.Count == 0)
+    {
+        <h4>
+            no subbmitters found
+        </h4>
+    }else 
+    {
+        <ol>
+            @foreach (var user in Model.Submitters)
+            {
+                <li>
+                    <p>
+                        user email : @user.Email
+                    </p>
+                </li>
+            }
+        </ol>
+    }
+</div>

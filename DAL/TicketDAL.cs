@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using BugTrackerApp.Models;
 
-namespace BugTrackerApp.Models.DAL
+namespace BugTrackerApp.DAL
 {
     public class TicketDAL 
     {

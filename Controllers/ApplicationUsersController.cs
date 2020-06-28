@@ -10,7 +10,7 @@ using BugTrackerApp.Models;
 using BugTrackerApp.BL;
 using Microsoft.AspNet.Identity;
 using Microsoft.VisualBasic.ApplicationServices;
-using BugTrackerApp.Models.DAL;
+using BugTrackerApp.DAL;
 
 namespace BugTrackerApp.Controllers
 {

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using BugTrackerApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.UI.HtmlControls;
 
-namespace BugTrackerApp.Models.DAL
+namespace BugTrackerApp.DAL
 {
     public class TicketTypeRepo
     {

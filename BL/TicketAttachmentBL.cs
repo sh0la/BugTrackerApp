@@ -1,4 +1,4 @@
-﻿using BugTrackerApp.Models.DAL;
+﻿using BugTrackerApp.DAL;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;

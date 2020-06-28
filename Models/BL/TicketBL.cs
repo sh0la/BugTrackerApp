@@ -37,5 +37,10 @@ namespace BugTrackerApp.Models.BL
             var ticket = _repo.Get(Id);
             _repo.Edit(ticket);
         }
+
+        public List<Ticket> OwnedTickets(string id)
+        {
+            return _repo.GetOwnedTicktsForUser(id);
+        }
     }
 }

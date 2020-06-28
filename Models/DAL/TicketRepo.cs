@@ -25,6 +25,11 @@ namespace BugTrackerApp.Models.DAL
             db.SaveChanges();
         }
 
+        public List<Ticket> GetOwnedTicktsForUser(string id)
+        {
+            return db.Tickets.Include("OwnerUser").Include("AssignedToUser").Where(t => t.OwnerUserId == id).ToList();
+        }
+
         public void Edit(Ticket ticket)
         {
 

@@ -15,7 +15,7 @@ else
 {
 
     <ol>
-        @foreach(var item in Model)
+        @foreach (var item in Model)
         {
             <li>
                 <p>
@@ -29,7 +29,7 @@ else
                     </b>
                 </p>
                 <ol>
-                    @foreach(var ticket in item.Tickets)
+                    @foreach (var ticket in item.Tickets)
                     {
                         <li>
                             <p>
@@ -50,3 +50,4 @@ else
             </li>
         }
     </ol>
+}

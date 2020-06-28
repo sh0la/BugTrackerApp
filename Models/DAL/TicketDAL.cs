@@ -31,5 +31,10 @@ namespace BugTrackerApp.Models.DAL
         {
             return db.Tickets.ToList();
         }
+
+        public List<Ticket> GetOwnedTicktsForUser(string id)
+        {
+            return db.Tickets.Where(t => t.OwnerUserId == id).ToList();
+        }
     }
 }

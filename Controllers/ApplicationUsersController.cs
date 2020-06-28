@@ -234,13 +234,11 @@ namespace BugTrackerApp.Controllers
         public ActionResult OwnedProjects()
         {
             string userId = User.Identity.GetUserId();
-            ApplicationUser user = _userBL.GetAUser(userId);
             List<Project> userProjects = _userBL.GetProjectsOfUser(userId);
             return RedirectToAction("Projects", "Projects", new {
             projects = userProjects,
             pageTitle = "Owned Projects"
             });
         }
-
     }
 }

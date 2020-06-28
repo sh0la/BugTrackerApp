@@ -539,6 +539,7 @@
     <Content Include="Views\ApplicationUsers\AddDeveloperToTicket.cshtml" />
     <Content Include="Views\Projects\Projects.cshtml" />
     <Content Include="Views\Tickets\Tickets.cshtml" />
+    <Content Include="Views\Tickets\OwnedTickets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

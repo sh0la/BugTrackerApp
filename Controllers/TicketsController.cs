@@ -138,5 +138,12 @@ namespace BugTrackerApp.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult OwnedTickets()
+        {
+            string userId = User.Identity.GetUserId();
+            List<Ticket> tickets = _tRepo.OwnedTickets(userId);
+            return View(tickets);
+        }
     }
 }

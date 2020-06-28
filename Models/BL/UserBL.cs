@@ -70,9 +70,7 @@ namespace BugTrackerApp.Models.BL
 
         public ApplicationUser GetAUser(string Id)
         {
-            var users = _repo.GetAllUsers();
-            return users.FirstOrDefault(u => u.Id == Id);
-           
+            return _repo.GetUser(Id);
         }
 
         public IList<ApplicationUser> GetAllUsers()
@@ -95,6 +93,12 @@ namespace BugTrackerApp.Models.BL
         {
             ApplicationUser user = _repo.GetUser(id);
             return user.AssignedToUserTickets.ToList();
+        }
+
+        public List<Ticket> GetOwnedTickets(string id)
+        {
+            ApplicationUser user = _repo.GetUser(id);
+            return user.OwnerTickets.ToList();
         }
 
 

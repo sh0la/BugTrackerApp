@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using BugTrackerApp.Models;
 using BugTrackerApp.BL;
 using Microsoft.AspNet.Identity;
+using BugTrackerApp.Models.BL;
 
 namespace BugTrackerApp.Controllers
 {
@@ -101,7 +102,6 @@ namespace BugTrackerApp.Controllers
             Ticket ticket = _tRepo.GetTicket((int)id);
             
             ViewBag.AssignedToUserId = new SelectList(_uBL.GetAllUsers(), "Id", "Email", ticket.AssignedToUserId);
-            ViewBag.OwnerUserId = new SelectList(_uBL.GetAllUsers(), "Id", "Email", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(_pRepo.GetAllProjects(), "Id", "Name", ticket.ProjectId);
             ViewBag.TicketStatusId = new SelectList(_tsRepo.GetAll(), "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(_ttRepo.GetAllTicketTypes(), "Id", "Name", ticket.TicketTypeId);
@@ -123,7 +123,6 @@ namespace BugTrackerApp.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AssignedToUserId = new SelectList(_uBL.GetAllUsers(), "Id", "Email", ticket.AssignedToUserId);
-            ViewBag.OwnerUserId = new SelectList(_uBL.GetAllUsers(), "Id", "Email", ticket.OwnerUserId);
             ViewBag.ProjectId = new SelectList(_pRepo.GetAllProjects(), "Id", "Name", ticket.ProjectId);
             ViewBag.TicketStatusId = new SelectList(_tsRepo.GetAll(), "Id", "Name", ticket.TicketStatusId);
             ViewBag.TicketTypeId = new SelectList(_ttRepo.GetAllTicketTypes(), "Id", "Name", ticket.TicketTypeId);
@@ -147,5 +146,19 @@ namespace BugTrackerApp.Controllers
             List<Ticket> tickets = _tRepo.OwnedTickets(userId);
             return View(tickets);
         }
+
+        public ActionResult AssignedToTickets()
+        {
+            string userId = User.Identity.GetUserId();
+            return View(_uBL.GetAllTicketsUserIsAssignedTo(userId));
+        }
+
+        public ActionResult TicketsOfAllProjects()
+        {
+            string userId = User.Identity.GetUserId();
+            return View(_uBL.GetAllTicketsOfAllProjectsOfAUser(userId));
+        }
+
+        
     }
 }

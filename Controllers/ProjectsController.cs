@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using BugTrackerApp.Models;
 using BugTrackerApp.BL;
 using Microsoft.AspNet.Identity;
+using BugTrackerApp.Models.BL;
 
 namespace BugTrackerApp.Controllers
 {
@@ -18,11 +19,13 @@ namespace BugTrackerApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private ProjectBL _pRepo;
         private ProjectUserBL _puRepo;
+        private UserBL _uRepo;
 
         public ProjectsController()
         {
             _pRepo = new ProjectBL();
             _puRepo = new ProjectUserBL();
+            _uRepo = new UserBL();
         }
 
         // GET: Projects
@@ -136,6 +139,13 @@ namespace BugTrackerApp.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult OwnedProjects()
+        {
+            string userId = User.Identity.GetUserId();
+            List<Project> userProjects = _uRepo.GetProjectsOfUser(userId);
+            return View(userProjects);
         }
     }
 }

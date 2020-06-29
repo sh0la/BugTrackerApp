@@ -323,6 +323,8 @@
     <Compile Include="Models\TicketType.cs" />
     <Compile Include="BL\UserBL.cs" />
     <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="Models\userPermisionsVM.cs" />
+    <Compile Include="Models\UserRolesVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -544,6 +546,8 @@
     <Content Include="Views\Projects\Projects.cshtml" />
     <Content Include="Views\Tickets\Tickets.cshtml" />
     <Content Include="Views\Tickets\OwnedTickets.cshtml" />
+    <Content Include="Views\Tickets\AssignedToTickets.cshtml" />
+    <Content Include="Views\Tickets\TicketsOfAllProjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,11 +1,12 @@
-﻿using BugTrackerApp.DAL;
+﻿using BugTrackerApp.BL;
+using BugTrackerApp.DAL;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BugTrackerApp.Models;
 
-namespace BugTrackerApp.BL
+namespace BugTrackerApp.Models.BL
 {
     public class UserBL
     {
@@ -101,6 +102,22 @@ namespace BugTrackerApp.BL
             ApplicationUser user = _repo.GetUser(id);
             return user.OwnerTickets.ToList();
         }
+
+        public List<ApplicationUser> GetAllUsersInRole(string roleName)
+        {
+            return _repo.GetAllUsers().Where(u => CheckIfUserIsInARole(u.Id, roleName)).ToList();
+        }
+
+        public List<IdentityRole> AllRolesOfAUser(string id)
+        {
+            return _repo.GetAllRolesOfUser(id);
+        }
+
+        public List<IdentityRole> GetRoles()
+        {
+            return _repo.GetRoles();
+        }
+
 
 
     }

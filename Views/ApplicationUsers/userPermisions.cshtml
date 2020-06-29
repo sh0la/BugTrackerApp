@@ -1,0 +1,29 @@
+﻿@model BugTrackerApp.Models.VM.userPermisionsVM
+
+<h2>user Permisions</h2>
+
+<h3>
+    user email : @Model.user.Email
+</h3>
+<div style="width:40%; display:inline-block;">
+    <h4>user roles</h4>
+    <ol>
+        @foreach (var role in Model.RolesUserIsIn)
+        {
+            <li>
+                @role.Name
+            </li>
+        }
+    </ol>
+</div>
+<div style="width:40%; display:inline-block;">
+    <h4>other available roles</h4>
+    <ol>
+        @foreach (var role in Model.RolesUserIsNotIn)
+        {
+            <li>
+                @role.Name
+            </li>
+        }
+    </ol>
+</div>

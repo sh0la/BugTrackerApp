@@ -105,5 +105,16 @@ namespace BugTrackerApp.DAL
             var user = db.Users.Find(id);
             return user.ProjectUsers.Select(pu => pu.Project).ToList();
         }
+
+        public List<IdentityRole> GetRoles()
+        {
+            return roleManager.Roles.ToList();
+        }
+
+        public List<IdentityRole> GetAllRolesOfUser(string id)
+        {
+            var user = db.Users.Find(id);
+            return roleManager.Roles.Where(r => user.Roles.Select(ur => ur.RoleId).Contains(r.Id)).ToList();
+        }
     }
 }

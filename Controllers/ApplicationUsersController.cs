@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using BugTrackerApp.Models;
 using BugTrackerApp.BL;
 using Microsoft.AspNet.Identity;
-using Microsoft.VisualBasic.ApplicationServices;
-using BugTrackerApp.DAL;
+using BugTrackerApp.Models.BL;
+using BugTrackerApp.Models.VM;
 
 namespace BugTrackerApp.Controllers
 {
@@ -32,47 +29,18 @@ namespace BugTrackerApp.Controllers
             _tBL = new TicketBL();
         }
 
-        // GET: ApplicationUsers
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(_userBL.GetAllUsers());
         }
 
-        // GET: ApplicationUsers/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
-
-        // GET: ApplicationUsers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ApplicationUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(applicationUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            ApplicationUser applicationUser = _userBL.GetAUser(id);
             return View(applicationUser);
         }
 
@@ -91,9 +59,6 @@ namespace BugTrackerApp.Controllers
             return View(applicationUser);
         }
 
-        // POST: ApplicationUsers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
@@ -107,7 +72,6 @@ namespace BugTrackerApp.Controllers
             return View(applicationUser);
         }
 
-        // GET: ApplicationUsers/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -122,7 +86,6 @@ namespace BugTrackerApp.Controllers
             return View(applicationUser);
         }
 
-        // POST: ApplicationUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
@@ -160,9 +123,6 @@ namespace BugTrackerApp.Controllers
         [HttpPost]
         public ActionResult AddUserToProject(string userId, int projectId, ProjectUserViewModel projectUser)
         {
-            //var projectUser = new ProjectUserViewModel { };
-            //projectUser.Users = db.Users;
-            //projectUser.Projects = db.Projects;
             ViewBag.UserId = new SelectList(_userBL.GetAllUsers(), "Id", "UserName");
             ViewBag.ProjectId = new SelectList(_pBL.GetAllProjects(), "Id", "Name");
 
@@ -171,13 +131,6 @@ namespace BugTrackerApp.Controllers
             return View(projectUser);
         }
         
-        //public ActionResult AddDeveloperToTicket(Ticket ticket, string userId)
-        //{
-        //    ticket.AssignedToUserId = userId;
-        //    return View();
-        //}
-
-        // GET: Tickets/Edit/5
         public ActionResult AddDeveloperToTicket(int? id)
         {
             if (id == null)
@@ -191,17 +144,9 @@ namespace BugTrackerApp.Controllers
             }
 
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "Email", ticket.AssignedToUserId);
-            //ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "Email", ticket.OwnerUserId);
-            //ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
-            //ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
-            //ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
-            //ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
             return View(ticket);
         }
 
-        // POST: Tickets/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AddDeveloperToTicket([Bind(Include = "Id,Title,Description,Created,Updated,ProjectId,TicketTypeId,TicketPriorityId,TicketStatusId,OwnerUserId,AssignedToUserId")] Ticket ticket)
@@ -213,14 +158,9 @@ namespace BugTrackerApp.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "Email", ticket.AssignedToUserId);
-            //ViewBag.OwnerUserId = new SelectList(db.Users, "Id", "Email", ticket.OwnerUserId);
-            //ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
-            //ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name", ticket.TicketStatusId);
-            //ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name", ticket.TicketTypeId);
-            //ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
+
             return View(ticket);
         }
-
 
         protected override void Dispose(bool disposing)
         {
@@ -231,15 +171,25 @@ namespace BugTrackerApp.Controllers
             base.Dispose(disposing);
         }
 
-
-        public ActionResult OwnedProjects()
+        public ActionResult UserRoles()
         {
-            string userId = User.Identity.GetUserId();
-            List<Project> userProjects = _userBL.GetProjectsOfUser(userId);
-            return RedirectToAction("Projects", "Projects", new {
-            projects = userProjects,
-            pageTitle = "Owned Projects"
-            });
+            UserRolesVM viewModel = new UserRolesVM();
+            viewModel.Admins = _userBL.GetAllUsersInRole("Administrator");
+            viewModel.PMs = _userBL.GetAllUsersInRole("Project Manager");
+            viewModel.Devs = _userBL.GetAllUsersInRole("Developer");
+            viewModel.Submitters = _userBL.GetAllUsersInRole("Submitter");
+            return View(viewModel);
         }
+
+        public ActionResult userPermisions(string id)
+        {
+            ApplicationUser user = _userBL.GetAUser(id);
+            userPermisionsVM vm = new userPermisionsVM();
+            vm.user = user;
+            vm.RolesUserIsIn = _userBL.AllRolesOfAUser(id);
+            vm.RolesUserIsNotIn = _userBL.GetRoles().Where(r => !vm.RolesUserIsIn.Contains(r)).ToList();
+            return View(vm);
+        }
+
     }
 }

@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace BugTrackerApp.Controllers
 {
+    [Authorize]
     public class TicketsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -139,6 +140,7 @@ namespace BugTrackerApp.Controllers
             base.Dispose(disposing);
         }
 
+        [Authorize(Roles = "Developer")]
         public ActionResult OwnedTickets()
         {
             string userId = User.Identity.GetUserId();

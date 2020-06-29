@@ -44,36 +44,36 @@
             //var admin = new IdentityUserRole { RoleId = "admin", UserId = "peter" };
 
             var resolved1 = new TicketStatus { Id = 1, Name = "resolved" };
-            var resolved2 = new TicketStatus { Id = 1, Name = "unresolved" };
-            var resolved3 = new TicketStatus { Id = 1, Name = "unresolved" };
-            var resolved4 = new TicketStatus { Id = 1, Name = "resolved" };
-            var resolved5 = new TicketStatus { Id = 1, Name = "resolved" };
+            var resolved2 = new TicketStatus { Id = 2, Name = "unresolved" };
+            var resolved3 = new TicketStatus { Id = 3, Name = "unresolved" };
+            var resolved4 = new TicketStatus { Id = 4, Name = "resolved" };
+            var resolved5 = new TicketStatus { Id = 5, Name = "resolved" };
 
             context.TicketStatuses.AddOrUpdate(resolved1, resolved2, resolved3, resolved4, resolved5);
 
             var priority1 = new TicketPriority { Id = 1, Name = "high" };
-            var priority2 = new TicketPriority { Id = 1, Name = "medium" };
-            var priority3 = new TicketPriority { Id = 1, Name = "high" };
-            var priority4 = new TicketPriority { Id = 1, Name = "low" };
-            var priority5 = new TicketPriority { Id = 1, Name = "low" };
+            var priority2 = new TicketPriority { Id = 2, Name = "medium" };
+            var priority3 = new TicketPriority { Id = 3, Name = "high" };
+            var priority4 = new TicketPriority { Id = 4, Name = "low" };
+            var priority5 = new TicketPriority { Id = 5, Name = "low" };
 
             context.TicketPriorities.AddOrUpdate(priority1, priority2, priority3, priority4, priority5);
 
             
             var type1 = new TicketType { Id = 1, Name = "high" };
-            var type2 = new TicketType { Id = 1, Name = "medium" };
-            var type3 = new TicketType { Id = 1, Name = "high" };
-            var type4 = new TicketType { Id = 1, Name = "low" };
-            var type5 = new TicketType { Id = 1, Name = "low" };
+            var type2 = new TicketType { Id = 2, Name = "medium" };
+            var type3 = new TicketType { Id = 3, Name = "high" };
+            var type4 = new TicketType { Id = 4, Name = "low" };
+            var type5 = new TicketType { Id = 5, Name = "low" };
 
             context.TicketTypes.AddOrUpdate(type1, type2, type3, type4, type5);
 
 
             var css = new Project { Id = 1, Name = "CSS"};
-            var html = new Project { Id = 1, Name = "html" };
-            var js = new Project { Id = 1, Name = "js" };
-            var product = new Project { Id = 1, Name = "product" };
-            var aboutUs = new Project { Id = 1, Name = "aboutUs" };
+            var html = new Project { Id = 2, Name = "html" };
+            var js = new Project { Id = 3, Name = "js" };
+            var product = new Project { Id = 4, Name = "product" };
+            var aboutUs = new Project { Id = 5, Name = "aboutUs" };
 
             context.Projects.AddOrUpdate(css, html, js, product, aboutUs);
 
@@ -176,9 +176,9 @@
 
             var ticketcomment1 = new Models.TicketComment { Id = 1, Comment = "It doesnt work on the Brave browser", Created = DateTime.Now, ApplicationUserId = "jasmeet", TicketId = 2 };
             var ticketcomment2 = new Models.TicketComment { Id = 2, Comment = "use the developer tools", Created = DateTime.Now, ApplicationUserId = "erfun", TicketId = 4 };
-            var ticketcomment3 = new Models.TicketComment { Id = 1, Comment = "Restarting the computer removes everything", Created = DateTime.Now, ApplicationUserId = "john", TicketId = 3 };
-            var ticketcomment4 = new Models.TicketComment { Id = 1, Comment = "They share the hex", Created = DateTime.Now, ApplicationUserId = "peter", TicketId = 1 };
-            var ticketcomment5 = new Models.TicketComment { Id = 1, Comment = "We have to test with all major browsers", Created = DateTime.Now, ApplicationUserId = "mike", TicketId = 2 };
+            var ticketcomment3 = new Models.TicketComment { Id = 3, Comment = "Restarting the computer removes everything", Created = DateTime.Now, ApplicationUserId = "john", TicketId = 3 };
+            var ticketcomment4 = new Models.TicketComment { Id = 4, Comment = "They share the hex", Created = DateTime.Now, ApplicationUserId = "peter", TicketId = 1 };
+            var ticketcomment5 = new Models.TicketComment { Id = 5, Comment = "We have to test with all major browsers", Created = DateTime.Now, ApplicationUserId = "mike", TicketId = 2 };
 
             context.TicketComments.AddOrUpdate(ticketcomment1, ticketcomment2, ticketcomment3, ticketcomment4, ticketcomment5);
 

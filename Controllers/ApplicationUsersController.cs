@@ -14,6 +14,7 @@ using BugTrackerApp.DAL;
 
 namespace BugTrackerApp.Controllers
 {
+    [Authorize(Roles = "Adminstrator, Project Manager")]
     public class ApplicationUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

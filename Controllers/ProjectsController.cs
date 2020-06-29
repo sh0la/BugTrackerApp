@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using BugTrackerApp.Models;
 using BugTrackerApp.BL;
 using Microsoft.AspNet.Identity;
+using BugTrackerApp.Models.BL;
 
 namespace BugTrackerApp.Controllers
 {

@@ -1,4 +1,5 @@
-﻿using BugTrackerApp.Models.DAL;
+﻿using BugTrackerApp.BL;
+using BugTrackerApp.DAL;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;

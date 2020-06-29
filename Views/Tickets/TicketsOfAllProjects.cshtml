@@ -1,6 +1,6 @@
 ﻿@model List<BugTrackerApp.Models.Ticket>
 
-<h2>Owned Tickets</h2>
+<h2>All tickets of all current projects</h2>
 
 @if (Model.Count == 0)
 {
@@ -27,7 +27,7 @@ else
                     }
                     else
                     {
-                        <span>no user ownes this ticket</span>
+                        <span>no user ownes this project</span>
                     }
                 </p>
                 <p>
@@ -37,7 +37,7 @@ else
                     }
                     else
                     {
-                        <span>no user is assigned to whis ticket</span>
+                        <span>no user is assigned to whis project</span>
                     }
                 </p>
             </li>

@@ -28,47 +28,18 @@ namespace BugTrackerApp.Controllers
             _tBL = new TicketBL();
         }
 
-        // GET: ApplicationUsers
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(_userBL.GetAllUsers());
         }
 
-        // GET: ApplicationUsers/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
-
-        // GET: ApplicationUsers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ApplicationUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(applicationUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            ApplicationUser applicationUser = _userBL.GetAUser(id);
             return View(applicationUser);
         }
 
@@ -87,9 +58,6 @@ namespace BugTrackerApp.Controllers
             return View(applicationUser);
         }
 
-        // POST: ApplicationUsers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
@@ -103,7 +71,6 @@ namespace BugTrackerApp.Controllers
             return View(applicationUser);
         }
 
-        // GET: ApplicationUsers/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -118,7 +85,6 @@ namespace BugTrackerApp.Controllers
             return View(applicationUser);
         }
 
-        // POST: ApplicationUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
@@ -164,7 +130,6 @@ namespace BugTrackerApp.Controllers
             return View(projectUser);
         }
         
-        // GET: Tickets/Edit/5
         public ActionResult AddDeveloperToTicket(int? id)
         {
             if (id == null)
@@ -196,7 +161,6 @@ namespace BugTrackerApp.Controllers
             return View(ticket);
         }
 
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -215,7 +179,6 @@ namespace BugTrackerApp.Controllers
             viewModel.Submitters = _userBL.GetAllUsersInRole("Submitter");
             return View(viewModel);
         }
-
 
         public ActionResult userPermisions(string id)
         {

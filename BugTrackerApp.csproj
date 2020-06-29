@@ -540,7 +540,7 @@
     <Content Include="Views\ProjectUsers\Details.cshtml" />
     <Content Include="Views\ProjectUsers\Edit.cshtml" />
     <Content Include="Views\ProjectUsers\Index.cshtml" />
-    <Content Include="Views\ApplicationUsers\DashboardTemp.cshtml" />
+    <Content Include="Views\ApplicationUsers\Dashboard.cshtml" />
     <Content Include="Views\ApplicationUsers\AddUserToProject.cshtml" />
     <Content Include="Views\ApplicationUsers\AddDeveloperToTicket.cshtml" />
     <Content Include="Views\Projects\Projects.cshtml" />

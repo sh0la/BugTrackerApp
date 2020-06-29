@@ -100,7 +100,7 @@ namespace BugTrackerApp.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult DashboardTemp()
+        public ActionResult Dashboard()
         {
             var pmDashboard = new PMDashboardViewModel { };
             pmDashboard.ApplicationUserId = User.Identity.GetUserId();

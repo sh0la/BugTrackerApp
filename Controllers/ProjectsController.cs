@@ -51,12 +51,14 @@ namespace BugTrackerApp.Controllers
             return View(project);
         }
 
+        [Authorize(Roles = "Adminstrator, Project Manager")]
         // GET: Projects/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Adminstrator, Project Manager")]
         // POST: Projects/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -76,6 +78,7 @@ namespace BugTrackerApp.Controllers
         }
 
         // GET: Projects/Edit/5
+        [Authorize(Roles = "Adminstrator, Project Manager")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,6 +98,7 @@ namespace BugTrackerApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminstrator, Project Manager")]
         public ActionResult Edit([Bind(Include = "Id,Name")] Project project)
         {
             if (ModelState.IsValid)
@@ -107,6 +111,7 @@ namespace BugTrackerApp.Controllers
         }
 
         // GET: Projects/Delete/5
+        [Authorize(Roles = "Adminstrator, Project Manager")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -124,6 +129,7 @@ namespace BugTrackerApp.Controllers
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminstrator, Project Manager")]
         public ActionResult DeleteConfirmed(int id)
         {
             Project project = db.Projects.Find(id);
@@ -141,6 +147,7 @@ namespace BugTrackerApp.Controllers
             base.Dispose(disposing);
         }
 
+        [Authorize(Roles = "Adminstrator, Project Manager")]
         public ActionResult OwnedProjects()
         {
             string userId = User.Identity.GetUserId();

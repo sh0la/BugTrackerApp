@@ -10,6 +10,7 @@ using BugTrackerApp.Models;
 
 namespace BugTrackerApp.Controllers
 {
+    [Authorize]
     public class TicketTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

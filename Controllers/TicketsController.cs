@@ -139,7 +139,6 @@ namespace BugTrackerApp.Controllers
             base.Dispose(disposing);
         }
 
-        [Authorize(Roles = "Developer")]
         public ActionResult OwnedTickets()
         {
             string userId = User.Identity.GetUserId();

@@ -44,6 +44,7 @@ namespace BugTrackerApp.Controllers
             return View(applicationUser);
         }
 
+        [Authorize(Roles = "Adminstrator")]
         // GET: ApplicationUsers/Edit/5
         public ActionResult Edit(string id)
         {
@@ -61,6 +62,7 @@ namespace BugTrackerApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminstrator")]
         public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
@@ -72,6 +74,7 @@ namespace BugTrackerApp.Controllers
             return View(applicationUser);
         }
 
+        [Authorize(Roles = "Adminstrator")]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -88,6 +91,7 @@ namespace BugTrackerApp.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Adminstrator")]
         public ActionResult DeleteConfirmed(string id)
         {
             ApplicationUser applicationUser = db.Users.Find(id);
